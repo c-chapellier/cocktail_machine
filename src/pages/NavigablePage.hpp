@@ -1,8 +1,7 @@
 
 #pragma once
 
-#include "../globals.hpp"
-#include "Page.hpp"
+#include "../global.hpp"
 
 class NavigablePage : public Page
 {
@@ -10,7 +9,7 @@ private:
     Adafruit_GFX_Button menuPageBtn;
 
 public:
-    NavigablePage(String name)
+    NavigablePage(const char *name)
         : Page(name)
     {}
 

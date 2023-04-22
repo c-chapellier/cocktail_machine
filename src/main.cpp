@@ -1,5 +1,5 @@
 
-#include "globals.hpp"
+#include "global.hpp"
 #include "Container.hpp"
 #include "pages/Page.hpp"
 #include "pages/MenuPage.hpp"
@@ -9,6 +9,7 @@
 #include "pages/AboutPage.hpp"
 #include "dialogs/ServeDialog.hpp"
 #include "dialogs/EditRecipeDialog.hpp"
+#include "components/Slider.hpp"
 
 static bool touchGetXY();
 

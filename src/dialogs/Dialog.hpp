@@ -1,8 +1,7 @@
 
 #pragma once
 
-#include "../globals.hpp"
-#include "../Container.hpp"
+#include "../global.hpp"
 
 class Dialog :  public Container
 {

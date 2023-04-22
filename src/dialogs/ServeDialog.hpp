@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include "Dialog.hpp"
+#include "../global.hpp"
 
 class ServeDialog : public Dialog
 {

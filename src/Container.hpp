@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include "globals.hpp"
+#include "global.hpp"
 
 class Container
 {
@@ -11,6 +11,6 @@ public:
     Container() {}
     virtual ~Container() = default;
     virtual void init() = 0;
-    virtual void render() = 0;
+    virtual void render() {};
     virtual int update(bool down) = 0;
 };

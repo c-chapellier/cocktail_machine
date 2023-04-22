@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include "Page.hpp"
+#include "../global.hpp"
 
 class MenuPage : public Page
 {

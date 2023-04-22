@@ -1,11 +1,6 @@
 
 #pragma once
 
-#define X 0
-#define Y 1
-#define W 2
-#define H 3
-
 class Box
 {
 private:
@@ -39,6 +34,16 @@ public:
     int getH() const
     {
         return this->h;
+    }
+
+    int getHSpacing() const
+    {
+        return this->hSpacing;
+    }
+
+    int getVSpacing() const
+    {
+        return this->vSpacing;
     }
 
     int getCaseWidth() const

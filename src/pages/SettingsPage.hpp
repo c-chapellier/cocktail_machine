@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include "NavigablePage.hpp"
+#include "../global.hpp"
 
 class SettingsPage : public NavigablePage
 {

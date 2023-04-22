@@ -4,7 +4,7 @@
 class Recipe
 {
 private:
-    String name;
+    const char *name;
     int quantities[6];
     bool haveIce;
 
@@ -34,7 +34,7 @@ public:
         // getProportion(0) * volume
     }
 
-    String getName()
+    const char *getName()
     {
         return name;
     }
