@@ -22,7 +22,7 @@ private:
     }
 
 public:
-    Recipe(String name, int quantities[6], bool haveIce)
+    Recipe(const char *name, int quantities[6], bool haveIce)
         : name(name), haveIce(haveIce)
     {
         for (int i = 0; i < 6; i++)

@@ -20,7 +20,7 @@ public:
         NavigablePage::init();
 
         for (int i = 0; i < 8; i++)
-            this->recipesBtns[i].initButton(&tft, CASE_X(i % 2), CASE_Y(i / 2 + 1), CASE_WIDTH, CASE_HEIGHT, TFT_WHITE, TFT_BLACK, TFT_WHITE, recipes[i].getName().c_str(), 2);
+            this->recipesBtns[i].initButton(&tft, pageContentBox.getCaseCenterX(2 + i), pageContentBox.getCaseCenterY(2 + i), pageContentBox.getCaseWidth(), pageContentBox.getCaseHeight(), TFT_WHITE, TFT_BLACK, TFT_WHITE, (char *)recipes[i].getName().c_str(), 2);
     }
 
     void render()

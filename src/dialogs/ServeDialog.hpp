@@ -20,9 +20,9 @@ public:
     {
         Dialog::init();
 
-        this->titleContainer.initButton(&tft, this->x, this->y - this->height/2 + V_SPACING + CASE_HEIGHT/2, CASE_WIDTH, CASE_HEIGHT, TFT_WHITE, TFT_BLACK, TFT_WHITE, "Lets get this done", 2);
-        this->startBtn.initButton(&tft, this->x - this->width/4, this->y + this->height/2 - V_SPACING - CASE_HEIGHT/2, CASE_WIDTH * 2/3, CASE_HEIGHT, TFT_WHITE, TFT_GREEN, TFT_WHITE, "START", 2);
-        this->stopBtn.initButton(&tft, this->x + this->width/4, this->y + this->height/2 - V_SPACING - CASE_HEIGHT/2, CASE_WIDTH * 2/3, CASE_HEIGHT, TFT_WHITE, TFT_RED, TFT_WHITE, "STOP", 2);
+        this->titleContainer.initButton(&tft, pageContentBox.getCenterX(), dialogContentBox.getCaseCenterY(0), pageContentBox.getCaseWidth(), pageContentBox.getCaseHeight(), TFT_WHITE, TFT_BLACK, TFT_WHITE, (char *)"Lets get this done", 2);
+        this->startBtn.initButton(&tft, dialogContentBox.getCaseCenterX(6), dialogContentBox.getCaseCenterY(6), dialogContentBox.getCaseWidth(), dialogContentBox.getCaseHeight(), TFT_WHITE, TFT_GREEN, TFT_WHITE, (char *)"START", 2);
+        this->stopBtn.initButton(&tft, dialogContentBox.getCaseCenterX(7), dialogContentBox.getCaseCenterY(7), dialogContentBox.getCaseWidth(), dialogContentBox.getCaseHeight(), TFT_WHITE, TFT_RED, TFT_WHITE, (char *)"STOP", 2);
     }
 
     void render()

@@ -6,6 +6,7 @@
 #include <TouchScreen.h>
 
 #include "Recipe.hpp"
+#include "components/Box.hpp"
 
 #define LANDSCAPE 1
 
@@ -17,15 +18,6 @@
 
 #define V_SPACING 10
 #define H_SPACING 20
-
-#define V_NB_CASES 5
-#define H_NB_CASES 2
-
-#define CASE_WIDTH (SCREEN_WIDTH - (H_SPACING * (H_NB_CASES + 1))) / H_NB_CASES
-#define CASE_HEIGHT (SCREEN_HEIGHT - (V_SPACING * (V_NB_CASES + 1))) / V_NB_CASES
-
-#define CASE_X(n) H_SPACING + (n) * (CASE_WIDTH + H_SPACING) + CASE_WIDTH/2
-#define CASE_Y(n) V_SPACING + (n) * (CASE_HEIGHT + V_SPACING) + CASE_HEIGHT/2
 
 #define MENU_PAGE 0
 #define SERVICE_PAGE 1
@@ -44,15 +36,29 @@ TouchScreen ts = TouchScreen(XP, YP, XM, YM, 300);
 
 int pixelX, pixelY;     //touchGetXY() updates global vars
 
+const Box pageContentBox(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, SCREEN_WIDTH, SCREEN_HEIGHT, H_SPACING, V_SPACING, 2, 5);
+const Box dialogContentBox(SCREEN_WIDTH/2, V_SPACING + pageContentBox.getCaseHeight() + (SCREEN_HEIGHT - V_SPACING - pageContentBox.getCaseHeight()) / 2, SCREEN_WIDTH * 4/5, SCREEN_HEIGHT * 2/3, H_SPACING, V_SPACING, 2, 4);
+
+int ingredients[8][6] = {
+    { 30, 10, 40, 0, 0, 0 },
+    { 30, 10, 40, 0, 0, 0 },
+    { 30, 10, 40, 0, 0, 0 },
+    { 30, 10, 40, 0, 0, 0 },
+    { 30, 10, 40, 0, 0, 0 },
+    { 30, 10, 40, 0, 0, 0 },
+    { 30, 10, 40, 0, 0, 0 },
+    { 30, 10, 40, 0, 0, 0 }
+};
+
 Recipe recipes[8] = {
-    Recipe("Mojito", { 30, 10, 40, 0, 0, 0 }, true),
-    Recipe("Pina Colada", { 30, 10, 40, 0, 0, 0 }, true),
-    Recipe("Caipirinha", { 30, 10, 40, 0, 0, 0 }, true),
-    Recipe("Cosmopolitan", { 30, 10, 40, 0, 0, 0 }, true),
-    Recipe("Margarita", { 30, 10, 40, 0, 0, 0 }, true),
-    Recipe("Grenadine", { 30, 10, 40, 0, 0, 0 }, true),
-    Recipe("Ricard", { 30, 10, 40, 0, 0, 0 }, true),
-    Recipe("Spritz", { 30, 10, 40, 0, 0, 0 }, true)
-}
+    Recipe("Mojito", ingredients[0], true),
+    Recipe("Pina Colada", ingredients[1], true),
+    Recipe("Caipirinha", ingredients[2], true),
+    Recipe("Cosmopolitan", ingredients[3], true),
+    Recipe("Margarita", ingredients[4], true),
+    Recipe("Grenadine", ingredients[5], true),
+    Recipe("Ricard", ingredients[6], true),
+    Recipe("Spritz", ingredients[7], true)
+};
 
 int selectedRecipe = 0;

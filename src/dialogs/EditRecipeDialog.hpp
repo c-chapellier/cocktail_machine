@@ -2,19 +2,26 @@
 #pragma once
 
 #include "Dialog.hpp"
+#include "../components/Slider.hpp"
+#include "../components/Box.hpp"
+
+Slider *sliders[6] = {
+    new Slider(dialogContentBox.getCaseX(0), dialogContentBox.getCaseY(0), dialogContentBox.getCaseWidth(), dialogContentBox.getCaseHeight()),
+    new Slider(dialogContentBox.getCaseX(1), dialogContentBox.getCaseY(1), dialogContentBox.getCaseWidth(), dialogContentBox.getCaseHeight()),
+    new Slider(dialogContentBox.getCaseX(2), dialogContentBox.getCaseY(2), dialogContentBox.getCaseWidth(), dialogContentBox.getCaseHeight()),
+    new Slider(dialogContentBox.getCaseX(3), dialogContentBox.getCaseY(3), dialogContentBox.getCaseWidth(), dialogContentBox.getCaseHeight()),
+    new Slider(dialogContentBox.getCaseX(4), dialogContentBox.getCaseY(4), dialogContentBox.getCaseWidth(), dialogContentBox.getCaseHeight()),
+    new Slider(dialogContentBox.getCaseX(5), dialogContentBox.getCaseY(5), dialogContentBox.getCaseWidth(), dialogContentBox.getCaseHeight()),
+};
 
 class EditRecipeDialog : public Dialog
 {
 private:
-    Slider sliders[6];
 
 public:
     EditRecipeDialog()
         : Dialog()
-    {
-        for (int i = 0; i < 6; i++)
-            this->sliders[i] = Slider(recipes[selectedRecipe].getQuantity(i));
-    }
+    {}
 
     ~EditRecipeDialog() {}
 
@@ -23,7 +30,7 @@ public:
         Dialog::init();
 
         for (int i = 0; i < 6; i++)
-            this->sliders[i].init();
+            sliders[i]->init();
     }
 
     void render()
@@ -31,7 +38,10 @@ public:
         Dialog::render();
 
         for (int i = 0; i < 6; i++)
-            this->sliders[i].render();
+        {
+            sliders[i]->setValue(recipes[selectedRecipe].getQuantity(i));
+            sliders[i]->render();
+        }
     }
 
     int update(bool down)
@@ -40,12 +50,12 @@ public:
         if (nextPage != -1) return nextPage;
 
         for (int i = 0; i < 6; i++)
-            this->sliders[i].update(down);
+            sliders[i]->update(down);
 
         if (down && !this->container.contains(pixelX, pixelY))
         {
             for (int i = 0; i < 6; i++)
-                recipes[selectedRecipe].setQuantity(i, this->sliders[i].getValue());
+                recipes[selectedRecipe].setQuantity(i, sliders[i]->getValue());
             return RECIPES_PAGE;
         }
 

@@ -18,7 +18,7 @@ public:
 
     virtual void init()
     {
-        this->title.initButton(&tft, SCREEN_WIDTH/2, CASE_Y(0), CASE_WIDTH, CASE_HEIGHT, TFT_WHITE, TFT_BLACK, TFT_WHITE, this->name.c_str(), 2);
+        this->title.initButton(&tft, SCREEN_WIDTH/2, pageContentBox.getCaseCenterY(0), pageContentBox.getCaseWidth(), pageContentBox.getCaseHeight(), TFT_WHITE, TFT_BLACK, TFT_WHITE, (char *)this->name.c_str(), 2);
     }
 
     virtual void render()

@@ -19,10 +19,10 @@ public:
     {
         Page::init();
 
-        this->servicePageBtn.initButton(&tft, CASE_X(0), CASE_Y(1), CASE_WIDTH, CASE_HEIGHT, TFT_WHITE, TFT_BLACK, TFT_WHITE, "Service", 2);
-        this->recipesPageBtn.initButton(&tft, CASE_X(1), CASE_Y(1), CASE_WIDTH, CASE_HEIGHT, TFT_WHITE, TFT_BLACK, TFT_WHITE, "Recettes", 2);
-        this->settingsPageBtn.initButton(&tft, CASE_X(0), CASE_Y(2), CASE_WIDTH, CASE_HEIGHT, TFT_WHITE, TFT_BLACK, TFT_WHITE, "Parametres", 2);
-        this->aboutPageBtn.initButton(&tft, CASE_X(1), CASE_Y(2), CASE_WIDTH, CASE_HEIGHT, TFT_WHITE, TFT_BLACK, TFT_WHITE, "A propos", 2);
+        this->servicePageBtn.initButton(&tft, pageContentBox.getCaseCenterX(2), pageContentBox.getCaseCenterY(2), pageContentBox.getCaseWidth(), pageContentBox.getCaseHeight(), TFT_WHITE, TFT_BLACK, TFT_WHITE, (char *)"Service", 2);
+        this->recipesPageBtn.initButton(&tft, pageContentBox.getCaseCenterX(3), pageContentBox.getCaseCenterY(3), pageContentBox.getCaseWidth(), pageContentBox.getCaseHeight(), TFT_WHITE, TFT_BLACK, TFT_WHITE, (char *)"Recettes", 2);
+        this->settingsPageBtn.initButton(&tft, pageContentBox.getCaseCenterX(4), pageContentBox.getCaseCenterY(4), pageContentBox.getCaseWidth(), pageContentBox.getCaseHeight(), TFT_WHITE, TFT_BLACK, TFT_WHITE, (char *)"Parametres", 2);
+        this->aboutPageBtn.initButton(&tft, pageContentBox.getCaseCenterX(5), pageContentBox.getCaseCenterY(5), pageContentBox.getCaseWidth(), pageContentBox.getCaseHeight(), TFT_WHITE, TFT_BLACK, TFT_WHITE, (char *)"A propos", 2);
     }
 
     void render()
