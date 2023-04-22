@@ -5,11 +5,6 @@
 #include <MCUFRIEND_kbv.h>
 #include <TouchScreen.h>
 
-#include "components/Box.hpp"
-#include "Recipe.hpp"
-
-#include "Container.hpp"
-
 #define LANDSCAPE 1
 
 #define MIN_PRESSURE 200
@@ -38,9 +33,6 @@ TouchScreen ts = TouchScreen(XP, YP, XM, YM, 300);
 
 int pixelX, pixelY;     // touchGetXY() updates global vars
 
-const Box pageContentBox(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, SCREEN_WIDTH, SCREEN_HEIGHT, H_SPACING, V_SPACING, 2, 5);
-const Box dialogContentBox(SCREEN_WIDTH/2, V_SPACING + pageContentBox.getCaseHeight() + (SCREEN_HEIGHT - V_SPACING - pageContentBox.getCaseHeight()) / 2, SCREEN_WIDTH * 4/5, SCREEN_HEIGHT * 2/3, H_SPACING, V_SPACING, 2, 4);
-
 int ingredients[8][6] = {
     { 30, 10, 40, 0, 0, 0 },
     { 30, 10, 40, 0, 0, 0 },
@@ -51,6 +43,8 @@ int ingredients[8][6] = {
     { 30, 10, 40, 0, 0, 0 },
     { 30, 10, 40, 0, 0, 0 }
 };
+
+#include "Recipe.hpp"
 
 Recipe recipes[8] = {
     Recipe("Mojito", ingredients[0], true),
@@ -65,17 +59,13 @@ Recipe recipes[8] = {
 
 int selectedRecipe = 0;
 
-#include "components/Slider.hpp"
+#include "components/Box.hpp"
 
-Slider sliders[7] = {
-    Slider("Reservoir 1", dialogContentBox.getCaseX(0), dialogContentBox.getCaseY(0), dialogContentBox.getCaseWidth(), dialogContentBox.getCaseHeight()),
-    Slider("Reservoir 2", dialogContentBox.getCaseX(1), dialogContentBox.getCaseY(1), dialogContentBox.getCaseWidth(), dialogContentBox.getCaseHeight()),
-    Slider("Reservoir 3", dialogContentBox.getCaseX(2), dialogContentBox.getCaseY(2), dialogContentBox.getCaseWidth(), dialogContentBox.getCaseHeight()),
-    Slider("Reservoir 4", dialogContentBox.getCaseX(3), dialogContentBox.getCaseY(3), dialogContentBox.getCaseWidth(), dialogContentBox.getCaseHeight()),
-    Slider("Reservoir 5", dialogContentBox.getCaseX(4), dialogContentBox.getCaseY(4), dialogContentBox.getCaseWidth(), dialogContentBox.getCaseHeight()),
-    Slider("Reservoir 6", dialogContentBox.getCaseX(5), dialogContentBox.getCaseY(5), dialogContentBox.getCaseWidth(), dialogContentBox.getCaseHeight()),
-    Slider("Glacons", dialogContentBox.getCaseX(6), dialogContentBox.getCaseY(6), dialogContentBox.getCaseWidth()*2 + dialogContentBox.getHSpacing(), dialogContentBox.getCaseHeight()),
-};
+const Box pageContentBox(SCREEN_WIDTH/2, SCREEN_HEIGHT/2, SCREEN_WIDTH, SCREEN_HEIGHT, H_SPACING, V_SPACING, 2, 5);
+const Box dialogContentBox(SCREEN_WIDTH/2, V_SPACING + pageContentBox.getCaseHeight() + (SCREEN_HEIGHT - V_SPACING - pageContentBox.getCaseHeight()) / 2, SCREEN_WIDTH * 4/5, SCREEN_HEIGHT * 2/3, H_SPACING, V_SPACING, 2, 4);
+
+#include "Container.hpp"
+#include "components/Slider.hpp"
 
 #include "dialogs/Dialog.hpp"
 #include "dialogs/EditRecipeDialog.hpp"

@@ -21,7 +21,7 @@ public:
     {
         tft.drawRect(this->x, this->y, this->w, this->h, TFT_WHITE);
         tft.fillRect(this->x + 2, this->y + 2, this->w - 4, this->h - 4, TFT_BLACK);
-        tft.fillRect(this->x + 2, this->y + 2, (this->w - 4) * this->value/100, this->h - 4, TFT_WHITE);
+        tft.fillRect(this->x + 2, this->y + 2, ((long int)(this->w - 4)) * this->value/100, this->h - 4, TFT_WHITE);
 
         if (this->name != NULL)
         {

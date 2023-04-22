@@ -22,6 +22,8 @@ public:
     void render()
     {
         NavigablePage::render();
+
+        // tft.drawRGBBitmap(pageContentBox.getCaseX(0), pageContentBox.getCaseY(0), bmp, pageContentBox.getW() - pageContentBox.getHSpacing()*2, pageContentBox.getH() - pageContentBox.getVSpacing()*2);
     }
 
     int update(bool down)
