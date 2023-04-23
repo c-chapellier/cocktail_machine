@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include "../../global.hpp"
+#include "global.hpp"
 
 class ServeDialog : public Dialog
 {
@@ -21,9 +21,9 @@ public:
     {
         Dialog::init();
 
-        this->titleContainer.initButton(&tft, pageContentBox.getCenterX(), dialogContentBox.getCaseCenterY(0), pageContentBox.getCaseWidth(), pageContentBox.getCaseHeight(), TFT_WHITE, TFT_BLACK, TFT_WHITE, (char *)"Lets get this done", 2);
-        this->startBtn.initButton(&tft, dialogContentBox.getCaseCenterX(6), dialogContentBox.getCaseCenterY(6), dialogContentBox.getCaseWidth(), dialogContentBox.getCaseHeight(), TFT_WHITE, TFT_GREEN, TFT_WHITE, (char *)"START", 2);
-        this->stopBtn.initButton(&tft, dialogContentBox.getCaseCenterX(7), dialogContentBox.getCaseCenterY(7), dialogContentBox.getCaseWidth(), dialogContentBox.getCaseHeight(), TFT_WHITE, TFT_RED, TFT_WHITE, (char *)"STOP", 2);
+        this->titleContainer.initButton(&tft, pageContentBox.getCenterX(), dialogContentBox.getCaseCenterY(0), pageContentBox.getCaseWidth(), pageContentBox.getCaseHeight(), TFT_WHITE, TFT_BLACK, TFT_WHITE, (char *)"Lets get this done", 2, 2);
+        this->startBtn.initButton(&tft, dialogContentBox.getCaseCenterX(6), dialogContentBox.getCaseCenterY(6), dialogContentBox.getCaseWidth(), dialogContentBox.getCaseHeight(), TFT_WHITE, TFT_GREEN, TFT_WHITE, (char *)"START", 2, 2);
+        this->stopBtn.initButton(&tft, dialogContentBox.getCaseCenterX(7), dialogContentBox.getCaseCenterY(7), dialogContentBox.getCaseWidth(), dialogContentBox.getCaseHeight(), TFT_WHITE, TFT_RED, TFT_WHITE, (char *)"STOP", 2, 2);
         
         this->progressBar.init();
     }

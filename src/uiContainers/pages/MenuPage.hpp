@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include "../../global.hpp"
+#include "global.hpp"
 
 class MenuPage : public Page
 {
@@ -33,6 +33,7 @@ public:
                 TFT_BLACK,
                 colors[i + 1][FORMAT_COLOR_16],
                 (char *)translate(uiContainersNames[this->items[i]]),
+                2,
                 2
             );
         }

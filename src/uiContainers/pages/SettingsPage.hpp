@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include "../../global.hpp"
+#include "global.hpp"
 
 class SettingsPage : public NavigablePage
 {
@@ -31,6 +31,7 @@ public:
                 TFT_BLACK,
                 TFT_WHITE,
                 (char *)translate(languagesNames[i]),
+                2,
                 2
             );
         }

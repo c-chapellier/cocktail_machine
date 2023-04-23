@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include "../../global.hpp"
+#include "global.hpp"
 
 class Page : public UIContainer
 {
@@ -18,7 +18,7 @@ public:
 
     virtual void init()
     {
-        this->title.initButton(&tft, SCREEN_WIDTH/2, pageContentBox.getCaseCenterY(0), pageContentBox.getCaseWidth(), pageContentBox.getCaseHeight(), TFT_WHITE, TFT_BLACK, TFT_WHITE, (char *)this->name, 2);
+        this->title.initButton(&tft, SCREEN_WIDTH/2, pageContentBox.getCaseCenterY(0), pageContentBox.getCaseWidth(), pageContentBox.getCaseHeight(), TFT_WHITE, TFT_BLACK, TFT_WHITE, (char *)this->name, 2, 2);
     }
 
     virtual void render()

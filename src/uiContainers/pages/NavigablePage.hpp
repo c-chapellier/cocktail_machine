@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include "../../global.hpp"
+#include "global.hpp"
 
 class NavigablePage : public Page
 {
@@ -19,7 +19,7 @@ public:
     {
         Page::init();
 
-        this->menuPageBtn.initButton(&tft, H_SPACING + 40, pageContentBox.getCaseCenterY(0), 80, pageContentBox.getCaseHeight()/2, TFT_WHITE, TFT_BLACK, TFT_WHITE, (char *)"<-", 2);
+        this->menuPageBtn.initButton(&tft, H_SPACING + 40, pageContentBox.getCaseCenterY(0), 80, pageContentBox.getCaseHeight()/2, TFT_WHITE, TFT_BLACK, TFT_WHITE, (char *)"<-", 2, 2);
     }
 
     void render()

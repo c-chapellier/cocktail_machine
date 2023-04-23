@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include "../../global.hpp"
+#include "global.hpp"
 
 class RecipesMenuPage : public NavigablePage
 {
@@ -31,6 +31,7 @@ public:
                 TFT_BLACK,
                 colors[recipes[i].getColorCode()][FORMAT_COLOR_16],
                 (char *)recipes[i].getName(),
+                2,
                 2
             );
         }

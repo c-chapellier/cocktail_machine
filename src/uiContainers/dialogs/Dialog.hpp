@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include "../../global.hpp"
+#include "global.hpp"
 
 class Dialog :  public UIContainer
 {
@@ -15,7 +15,7 @@ public:
 
     virtual void init()
     {
-        this->container.initButton(&tft, dialogContentBox.getCenterX(), dialogContentBox.getCenterY(), dialogContentBox.getW(), dialogContentBox.getH(), TFT_WHITE, TFT_BLACK, TFT_WHITE, (char *)"", 2);
+        this->container.initButton(&tft, dialogContentBox.getCenterX(), dialogContentBox.getCenterY(), dialogContentBox.getW(), dialogContentBox.getH(), TFT_WHITE, TFT_BLACK, TFT_WHITE, (char *)"", 2, 2, 8);
     }
 
     virtual void render()
