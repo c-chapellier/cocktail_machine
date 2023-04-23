@@ -6,7 +6,9 @@
 class MenuPage : public Page
 {
 private:
-    Adafruit_GFX_Button servicePageBtn, recipesPageBtn, settingsPageBtn, aboutPageBtn;
+    static const int nItems = 4;
+    const int items[MenuPage::nItems] = { SERVICE_PAGE, RECIPES_PAGE, SETTINGS_PAGE, ABOUT_PAGE };
+    Adafruit_GFX_Button btns[MenuPage::nItems];
 
 public:
     MenuPage()
@@ -19,20 +21,29 @@ public:
     {
         Page::init();
 
-        this->servicePageBtn.initButton(&tft, pageContentBox.getCaseCenterX(2), pageContentBox.getCaseCenterY(2), pageContentBox.getCaseWidth(), pageContentBox.getCaseHeight(), TFT_WHITE, TFT_BLACK, TFT_WHITE, (char *)"Service", 2);
-        this->recipesPageBtn.initButton(&tft, pageContentBox.getCaseCenterX(3), pageContentBox.getCaseCenterY(3), pageContentBox.getCaseWidth(), pageContentBox.getCaseHeight(), TFT_WHITE, TFT_BLACK, TFT_WHITE, (char *)"Recettes", 2);
-        this->settingsPageBtn.initButton(&tft, pageContentBox.getCaseCenterX(4), pageContentBox.getCaseCenterY(4), pageContentBox.getCaseWidth(), pageContentBox.getCaseHeight(), TFT_WHITE, TFT_BLACK, TFT_WHITE, (char *)"Parametres", 2);
-        this->aboutPageBtn.initButton(&tft, pageContentBox.getCaseCenterX(5), pageContentBox.getCaseCenterY(5), pageContentBox.getCaseWidth(), pageContentBox.getCaseHeight(), TFT_WHITE, TFT_BLACK, TFT_WHITE, (char *)"A propos", 2);
+        for (int i = 0; i < MenuPage::nItems; i++)
+        {
+            this->btns[i].initButton(
+                &tft,
+                pageContentBox.getCaseCenterX(2 + i),
+                pageContentBox.getCaseCenterY(2 + i),
+                pageContentBox.getCaseWidth(),
+                pageContentBox.getCaseHeight(),
+                colors[i + 1][FORMAT_COLOR_16],
+                TFT_BLACK,
+                colors[i + 1][FORMAT_COLOR_16],
+                (char *)containerNames[this->items[i]],
+                2
+            );
+        }
     }
 
     void render()
     {
         Page::render();
 
-        this->servicePageBtn.drawButton(false);
-        this->recipesPageBtn.drawButton(false);
-        this->settingsPageBtn.drawButton(false);
-        this->aboutPageBtn.drawButton(false);
+        for (int i = 0; i < MenuPage::nItems; i++)
+            this->btns[i].drawButton(false);
     }
 
     int update(bool down)
@@ -40,40 +51,16 @@ public:
         int nextPage = Page::update(down);
         if (nextPage != -1) return nextPage;
 
-        this->servicePageBtn.press(down && this->servicePageBtn.contains(touchX, touchY)); 
-        if (this->servicePageBtn.justReleased())
-            this->servicePageBtn.drawButton(false);    
-        if (this->servicePageBtn.justPressed())
+        for (int i = 0; i < MenuPage::nItems; i++)
         {
-            this->servicePageBtn.drawButton(true);
-            return SERVICE_PAGE;
-        }
-
-        this->recipesPageBtn.press(down && this->recipesPageBtn.contains(touchX, touchY)); 
-        if (this->recipesPageBtn.justReleased())
-            this->recipesPageBtn.drawButton(false);    
-        if (this->recipesPageBtn.justPressed())
-        {
-            this->recipesPageBtn.drawButton(true);
-            return RECIPES_PAGE;
-        }
-
-        this->settingsPageBtn.press(down && this->settingsPageBtn.contains(touchX, touchY)); 
-        if (this->settingsPageBtn.justReleased())
-            this->settingsPageBtn.drawButton(false);    
-        if (this->settingsPageBtn.justPressed())
-        {
-            this->settingsPageBtn.drawButton(true);
-            return SETTINGS_PAGE;
-        }
-
-        this->aboutPageBtn.press(down && this->aboutPageBtn.contains(touchX, touchY)); 
-        if (this->aboutPageBtn.justReleased())
-            this->aboutPageBtn.drawButton(false);    
-        if (this->aboutPageBtn.justPressed())
-        {
-            this->aboutPageBtn.drawButton(true);
-            return ABOUT_PAGE;
+            this->btns[i].press(down && this->btns[i].contains(touchX, touchY));
+            if (this->btns[i].justReleased())
+                this->btns[i].drawButton(false);
+            if (this->btns[i].justPressed())
+            {
+                this->btns[i].drawButton(true);
+                return this->items[i];
+            }
         }
 
         return -1;
