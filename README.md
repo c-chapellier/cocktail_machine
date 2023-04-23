@@ -197,15 +197,15 @@ Project Link: [https://github.com/c-chapellier/cocktail_machine](https://github.
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/c-chapellier/cocktail_machine.svg?style=for-the-badge
 [contributors-url]: https://github.com/c-chapellier/cocktail_machine/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/c-chapellier/cocktail_machine.svg?style=for-the-badge
 [forks-url]: https://github.com/c-chapellier/cocktail_machine/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/c-chapellier/cocktail_machine.svg?style=for-the-badge
 [stars-url]: https://github.com/c-chapellier/cocktail_machine/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/c-chapellier/cocktail_machine.svg?style=for-the-badge
 [issues-url]: https://github.com/c-chapellier/cocktail_machine/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/c-chapellier/cocktail_machine.svg?style=for-the-badge
 [license-url]: https://github.com/c-chapellier/cocktail_machine/blob/main/LICENSE
 <!-- [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/othneildrew -->
