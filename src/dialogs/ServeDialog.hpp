@@ -51,20 +51,31 @@ public:
         if (this->startBtn.justPressed())
         {
             this->startBtn.drawButton(true);
+            
             this->serveRecipe();
             return SERVICE_PAGE;
         }
 
+        if (checkStop(down))
+            return SERVICE_PAGE;
+
+        return -1;
+    }
+
+    int checkStop(bool down)
+    {
         this->stopBtn.press(down && this->stopBtn.contains(touchX, touchY));
+
         if (this->stopBtn.justReleased())
             this->stopBtn.drawButton(false);
+
         if (this->stopBtn.justPressed())
         {
             this->stopBtn.drawButton(true);
-            return SERVICE_PAGE;
+            return 1;
         }
 
-        return -1;
+        return 0;
     }
 
     void serveRecipe()
@@ -81,6 +92,7 @@ public:
             rgbStrip.update();
 
             delay(500);
+            if (checkStop(touchGetXY())) return;
         }
 
         for (int i = 0; i < 3; i++)
@@ -88,10 +100,12 @@ public:
             rgbStrip.setBrightness(0);
             rgbStrip.update();
             delay(500);
+            if (checkStop(touchGetXY())) return;
 
             rgbStrip.setBrightness(255);
             rgbStrip.update();
             delay(500);
+            if (checkStop(touchGetXY())) return;
         }
 
         rgbStrip.setMode(RGBStrip::Mode::RAINBOW);

@@ -1,8 +1,6 @@
 
 #include "global.hpp"
 
-static bool touchGetXY();
-
 Container *pages[] = {
     new MenuPage(),
     new RecipesMenuPage(SERVE_DIALOG),
@@ -51,7 +49,7 @@ void loop()
     rgbStrip.update();
 }
 
-static bool touchGetXY()
+bool touchGetXY()
 {
     TSPoint p = ts.getPoint();
     

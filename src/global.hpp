@@ -90,7 +90,9 @@ MCUFRIEND_kbv tft;
 const int XP = 8, XM = A2, YP = A3, YM = 9;
 const int TS_LEFT = 128, TS_RT = 910, TS_TOP = 960, TS_BOT = 93;
 TouchScreen ts(XP, YP, XM, YM, 300);
+
 int touchX, touchY;
+bool touchGetXY();
 
 #include "Recipe.hpp"
 
