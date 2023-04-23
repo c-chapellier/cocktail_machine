@@ -32,6 +32,8 @@ TouchScreen ts(XP, YP, XM, YM, 300);
 int touchX, touchY;
 bool touchGetXY();
 
+void setup();
+
 #include "Recipe.hpp"
 
 // BLACK | NAVY | DARKGREEN | DARKCYAN | MAROON | PURPLE | OLIVE | LIGHTGREY | DARKGREY

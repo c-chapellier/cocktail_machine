@@ -8,9 +8,17 @@
 #define DUTCH 3
 #define GERMAN 4
 
-int language = GERMAN;
+int language = FRENCH;
 
 #define translate(str) ((str)[language])
+
+const char *languagesNames[N_LANGUAGES][N_LANGUAGES] = {
+    { "Francais", "French", "Frances", "Frans", "Franzosisch" },
+    { "Anglais", "English", "Ingles", "Engels", "Englisch" },
+    { "Espagnol", "Spanish", "Espanol", "Spaans", "Spanisch" },
+    { "Neerlandais", "Dutch", "Holandes", "Nederlands", "Niederlandisch" },
+    { "Allemand", "German", "Aleman", "Duits", "Deutsch" }
+};
 
 #define N_UI_CONTAINERS 7
 #define MENU_PAGE 0
@@ -21,103 +29,25 @@ int language = GERMAN;
 #define ABOUT_PAGE 5
 #define EDIT_RECIPE_DIALOG 6
 
-const char *uiContainersNames[N_LANGUAGES][N_UI_CONTAINERS] = {
-    {
-        "Menu",
-        "Service",
-        "Recettes",
-        "Service",
-        "Parametres",
-        "A propos",
-        "Recettes"
-    },
-    {
-        "Menu",
-        "Service",
-        "Recipes",
-        "Service",
-        "Settings",
-        "About",
-        "Recipes"
-    },
-    {
-        "Menu",
-        "Servicio",
-        "Recetas",
-        "Servicio",
-        "Ajustes",
-        "Acerca de",
-        "Recetas"
-    },
-    {
-        "Menu",
-        "Service",
-        "Recepten",
-        "Service",
-        "Instellingen",
-        "Over",
-        "Recepten"
-    },
-    {
-        "Menu",
-        "Service",
-        "Rezepte",
-        "Service",
-        "Einstellungen",
-        "Uber",
-        "Rezepte"
-    }
+const char *uiContainersNames[N_UI_CONTAINERS][N_LANGUAGES] = {
+    { "Menu", "Menu", "Menu", "Menu", "Menu" },
+    { "Service", "Service", "Servicio", "Service", "Service" },
+    { "Recettes", "Recipes", "Recetas", "Recepten", "Rezepte" },
+    { "Service", "Service", "Servicio", "Service", "Service" },
+    { "Parametres", "Settings", "Ajustes", "Instellingen", "Einstellungen" },
+    { "A propos", "About", "Acerca de", "Over", "Über" },
+    { "Recettes", "Recipes", "Recetas", "Recepten", "Rezepte" }
 };
 
 #define N_PHYSICAL_CONTAINERS 6
 
-const char *physicalContainersNames[N_LANGUAGES][N_PHYSICAL_CONTAINERS] = {
-    {
-        "Coca",
-        "Eau",
-        "Ricard",
-        "Rhum",
-        "Vodka",
-        "Glucose"
-    },
-    {
-        "Coca",
-        "Water",
-        "Ricard",
-        "Rum",
-        "Vodka",
-        "Glucose"
-    },
-    {
-        "Coca",
-        "Agua",
-        "Ricard",
-        "Ron",
-        "Vodka",
-        "Glucosa"
-    },
-    {
-        "Coca",
-        "Water",
-        "Ricard",
-        "Rum",
-        "Vodka",
-        "Glucose"
-    },
-    {
-        "Coca",
-        "Wasser",
-        "Ricard",
-        "Rum",
-        "Wodka",
-        "Glucose"
-    }
+const char *physicalContainersNames[N_PHYSICAL_CONTAINERS][N_LANGUAGES] = {
+    { "Coca", "Coke", "Coca", "Coca", "Coca" },
+    { "Eau", "Water", "Agua", "Water", "Wasser" },
+    { "Ricard", "Ricard", "Ricard", "Ricard", "Ricard" },
+    { "Rhum", "Rum", "Ron", "Rum", "Rum" },
+    { "Vodka", "Vodka", "Vodka", "Wodka", "Wodka" },
+    { "Glucose", "Glucose", "Glucosa", "Glucose", "Glucose" }
 };
 
-const char *iceContainerName[N_LANGUAGES] = {
-    "Glace",
-    "Ice",
-    "Hielo",
-    "Ijs",
-    "Eis"
-};
+const char *iceContainerName[N_LANGUAGES] = { "Glace", "Ice", "Hielo", "Ijs", "Eis" };
