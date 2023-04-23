@@ -5,10 +5,11 @@ class Recipe
 {
 private:
     const char *name;
+    const uint8_t color_code;
     int quantities[6];
     bool haveIce;
 
-    int getQuantitiesSum()
+    int getQuantitiesSum() const
     {
         int sum = 0;
         for (int i = 0; i < 6; i++)
@@ -16,14 +17,14 @@ private:
         return sum;
     }
 
-    int getProportion(int index)
+    int getProportion(int index) const
     {
         return quantities[index] / getQuantitiesSum();
     }
 
 public:
-    Recipe(const char *name, int quantities[6], bool haveIce)
-        : name(name), haveIce(haveIce)
+    Recipe(const char *name, uint8_t color_code, int quantities[6], bool haveIce)
+        : name(name), color_code(color_code), haveIce(haveIce)
     {
         for (int i = 0; i < 6; i++)
             this->quantities[i] = quantities[i];
@@ -34,12 +35,12 @@ public:
         // getProportion(0) * volume
     }
 
-    const char *getName()
+    const char *getName() const
     {
         return name;
     }
 
-    int getQuantity(int index)
+    int getQuantity(int index) const
     {
         if (index < 0 || index > 5) return -1;
         return quantities[index];
@@ -51,5 +52,10 @@ public:
 
         quantities[index] = value;
         return 0;
+    }
+
+    uint32_t getColorCode() const 
+    {
+        return this->color_code;
     }
 };

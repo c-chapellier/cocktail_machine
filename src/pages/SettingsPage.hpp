@@ -9,7 +9,7 @@ private:
 
 public:
     SettingsPage()
-        : NavigablePage("Settings")
+        : NavigablePage(containerNames[SETTINGS_PAGE])
     {}
 
     ~SettingsPage() {}

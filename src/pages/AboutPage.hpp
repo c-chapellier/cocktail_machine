@@ -9,7 +9,7 @@ private:
 
 public:
     AboutPage()
-        : NavigablePage("About")
+        : NavigablePage(containerNames[ABOUT_PAGE])
     {}
 
     ~AboutPage() {}

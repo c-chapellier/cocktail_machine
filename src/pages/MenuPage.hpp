@@ -10,7 +10,7 @@ private:
 
 public:
     MenuPage()
-        : Page("Menu")
+        : Page(containerNames[MENU_PAGE])
     {}
 
     ~MenuPage() {}
@@ -40,7 +40,7 @@ public:
         int nextPage = Page::update(down);
         if (nextPage != -1) return nextPage;
 
-        this->servicePageBtn.press(down && this->servicePageBtn.contains(pixelX, pixelY)); 
+        this->servicePageBtn.press(down && this->servicePageBtn.contains(touchX, touchY)); 
         if (this->servicePageBtn.justReleased())
             this->servicePageBtn.drawButton(false);    
         if (this->servicePageBtn.justPressed())
@@ -49,7 +49,7 @@ public:
             return SERVICE_PAGE;
         }
 
-        this->recipesPageBtn.press(down && this->recipesPageBtn.contains(pixelX, pixelY)); 
+        this->recipesPageBtn.press(down && this->recipesPageBtn.contains(touchX, touchY)); 
         if (this->recipesPageBtn.justReleased())
             this->recipesPageBtn.drawButton(false);    
         if (this->recipesPageBtn.justPressed())
@@ -58,7 +58,7 @@ public:
             return RECIPES_PAGE;
         }
 
-        this->settingsPageBtn.press(down && this->settingsPageBtn.contains(pixelX, pixelY)); 
+        this->settingsPageBtn.press(down && this->settingsPageBtn.contains(touchX, touchY)); 
         if (this->settingsPageBtn.justReleased())
             this->settingsPageBtn.drawButton(false);    
         if (this->settingsPageBtn.justPressed())
@@ -67,7 +67,7 @@ public:
             return SETTINGS_PAGE;
         }
 
-        this->aboutPageBtn.press(down && this->aboutPageBtn.contains(pixelX, pixelY)); 
+        this->aboutPageBtn.press(down && this->aboutPageBtn.contains(touchX, touchY)); 
         if (this->aboutPageBtn.justReleased())
             this->aboutPageBtn.drawButton(false);    
         if (this->aboutPageBtn.justPressed())

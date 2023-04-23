@@ -50,7 +50,7 @@ public:
         for (int i = 0; i < 7; i++)
             this->sliders[i].update(down);
 
-        if (down && !this->container.contains(pixelX, pixelY))
+        if (down && !this->container.contains(touchX, touchY))
         {
             for (int i = 0; i < 7; i++)
                 recipes[selectedRecipe].setQuantity(i, this->sliders[i].getValue());

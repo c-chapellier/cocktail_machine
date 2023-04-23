@@ -45,7 +45,7 @@ public:
         int nextPage = Dialog::update(down);
         if (nextPage != -1) return nextPage;
 
-        this->startBtn.press(down && this->startBtn.contains(pixelX, pixelY));
+        this->startBtn.press(down && this->startBtn.contains(touchX, touchY));
         if (this->startBtn.justReleased())
             this->startBtn.drawButton(false);
         if (this->startBtn.justPressed())
@@ -55,7 +55,7 @@ public:
             return SERVICE_PAGE;
         }
 
-        this->stopBtn.press(down && this->stopBtn.contains(pixelX, pixelY));
+        this->stopBtn.press(down && this->stopBtn.contains(touchX, touchY));
         if (this->stopBtn.justReleased())
             this->stopBtn.drawButton(false);
         if (this->stopBtn.justPressed())
@@ -69,11 +69,33 @@ public:
 
     void serveRecipe()
     {
+        rgbStrip.setMode(RGBStrip::Mode::UNICOLOR);
+        rgbStrip.setUnicolorModeColor(colors[recipes[selectedRecipe].getColorCode()][FORMAT_COLOR_32]);
+
         for (int i = 0; i < 11; i++)
         {
             this->progressBar.setValue(i * 10);
             this->progressBar.render();
+
+            rgbStrip.setBrightness(i * 25);
+            rgbStrip.update();
+
             delay(500);
         }
+
+        for (int i = 0; i < 3; i++)
+        {
+            rgbStrip.setBrightness(0);
+            rgbStrip.update();
+            delay(500);
+
+            rgbStrip.setBrightness(255);
+            rgbStrip.update();
+            delay(500);
+        }
+
+        rgbStrip.setMode(RGBStrip::Mode::RAINBOW);
+        rgbStrip.setBrightness(255);
+        rgbStrip.update();
     }
 };

@@ -34,7 +34,7 @@ public:
         int nextPage = Page::update(down);
         if (nextPage != -1) return nextPage;
 
-        this->menuPageBtn.press(down && this->menuPageBtn.contains(pixelX, pixelY));
+        this->menuPageBtn.press(down && this->menuPageBtn.contains(touchX, touchY));
         
         if (this->menuPageBtn.justReleased())
             this->menuPageBtn.drawButton(false);

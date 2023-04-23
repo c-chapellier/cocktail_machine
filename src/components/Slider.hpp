@@ -41,9 +41,9 @@ public:
 
     virtual int update(bool down)
     {
-        if (down && (x <= pixelX && pixelX <= x + w && y <= pixelY && pixelY <= y + h))
+        if (down && (x <= touchX && touchX <= x + w && y <= touchY && touchY <= y + h))
         {
-            this->value = (pixelX - x) * 100/w;
+            this->value = (touchX - x) * 100/w;
             this->render();
         }
 
