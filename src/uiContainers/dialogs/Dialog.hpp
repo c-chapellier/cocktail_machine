@@ -1,9 +1,9 @@
 
 #pragma once
 
-#include "../global.hpp"
+#include "../../global.hpp"
 
-class Dialog :  public Container
+class Dialog :  public UIContainer
 {
 protected:
     Adafruit_GFX_Button container;

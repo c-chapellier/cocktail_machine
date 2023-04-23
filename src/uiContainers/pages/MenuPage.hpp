@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include "../global.hpp"
+#include "../../global.hpp"
 
 class MenuPage : public Page
 {
@@ -12,7 +12,7 @@ private:
 
 public:
     MenuPage()
-        : Page(containerNames[MENU_PAGE])
+        : Page(translate(uiContainersNames[MENU_PAGE]))
     {}
 
     ~MenuPage() {}
@@ -32,7 +32,7 @@ public:
                 colors[i + 1][FORMAT_COLOR_16],
                 TFT_BLACK,
                 colors[i + 1][FORMAT_COLOR_16],
-                (char *)containerNames[this->items[i]],
+                (char *)translate(uiContainersNames[this->items[i]]),
                 2
             );
         }

@@ -1,9 +1,9 @@
 
 #pragma once
 
-#include "../global.hpp"
+#include "../../global.hpp"
 
-class Slider : public Container
+class Slider : public UIContainer
 {
 private:
     const char *name;

@@ -1,15 +1,15 @@
 
 #pragma once
 
-#include "global.hpp"
+#include "../global.hpp"
 
-class Container
+class UIContainer
 {
 private:
 
 public:
-    Container() {}
-    virtual ~Container() = default;
+    UIContainer() {}
+    virtual ~UIContainer() = default;
     virtual void init() = 0;
     virtual void render() {};
     virtual int update(bool down) = 0;

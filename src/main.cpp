@@ -1,7 +1,7 @@
 
 #include "global.hpp"
 
-Container *pages[] = {
+UIContainer *pages[] = {
     new MenuPage(),
     new RecipesMenuPage(SERVE_DIALOG),
     new RecipesMenuPage(EDIT_RECIPE_DIALOG),

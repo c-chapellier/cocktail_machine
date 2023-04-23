@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include "../global.hpp"
+#include "../../global.hpp"
 
 class RecipesMenuPage : public NavigablePage
 {
@@ -11,7 +11,7 @@ private:
 
 public:
     RecipesMenuPage(int recipeDialog)
-        : NavigablePage(containerNames[recipeDialog]), recipeDialog(recipeDialog)
+        : NavigablePage(translate(uiContainersNames[recipeDialog])), recipeDialog(recipeDialog)
     {}
 
     ~RecipesMenuPage() {}

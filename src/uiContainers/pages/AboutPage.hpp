@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include "../global.hpp"
+#include "../../global.hpp"
 
 class AboutPage : public NavigablePage
 {
@@ -9,7 +9,7 @@ private:
 
 public:
     AboutPage()
-        : NavigablePage(containerNames[ABOUT_PAGE])
+        : NavigablePage(translate(uiContainersNames[ABOUT_PAGE]))
     {}
 
     ~AboutPage() {}
