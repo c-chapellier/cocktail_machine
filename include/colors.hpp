@@ -1,6 +1,8 @@
 
 #pragma once
 
+#include <ctype.h>
+
 #define RGB_TO_COLOR(r, g, b) (((uint32_t)(r) << 16) | ((uint32_t)(g) << 8) | (b))
 
 #define FORMAT_COLOR_16 0
