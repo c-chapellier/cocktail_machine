@@ -5,28 +5,36 @@
 
 #define RGB_TO_COLOR(r, g, b) (((uint32_t)(r) << 16) | ((uint32_t)(g) << 8) | (b))
 
-#define FORMAT_COLOR_16 0
-#define FORMAT_COLOR_32 1
+#define N_COLOR_MODES       2
+#define DARK_MODE           0
+#define LIGHT_MODE          1
+#define DEFAULT_COLOR_MODE  DARK_MODE
 
-#define CM_COLORS_BLACK       0
-#define CM_COLORS_NAVY        1
-#define CM_COLORS_DARKGREEN   2
-#define CM_COLORS_DARKCYAN    3
-#define CM_COLORS_MAROON      4
-#define CM_COLORS_PURPLE      5
-#define CM_COLORS_OLIVE       6
-#define CM_COLORS_LIGHTGREY   7
-#define CM_COLORS_DARKGREY    8
-#define CM_COLORS_BLUE        9
-#define CM_COLORS_GREEN       10
-#define CM_COLORS_CYAN        11
-#define CM_COLORS_RED         12
-#define CM_COLORS_MAGENTA     13
-#define CM_COLORS_YELLOW      14
-#define CM_COLORS_WHITE       15
-#define CM_COLORS_ORANGE      16
-#define CM_COLORS_GREENYELLOW 17
-#define CM_COLORS_PINK        18
+int colorMode = DEFAULT_COLOR_MODE;
+
+#define FORMAT_COLOR_16     0
+#define FORMAT_COLOR_32     1
+
+// colors are default in dark mode
+#define CM_COLORS_BLACK       (colorMode == DARK_MODE ? 0 : 15)
+#define CM_COLORS_NAVY        (colorMode == DARK_MODE ? 1 : 1)
+#define CM_COLORS_DARKGREEN   (colorMode == DARK_MODE ? 2 : 2)
+#define CM_COLORS_DARKCYAN    (colorMode == DARK_MODE ? 3 : 3)
+#define CM_COLORS_MAROON      (colorMode == DARK_MODE ? 4 : 4)
+#define CM_COLORS_PURPLE      (colorMode == DARK_MODE ? 5 : 5)
+#define CM_COLORS_OLIVE       (colorMode == DARK_MODE ? 6 : 6)
+#define CM_COLORS_LIGHTGREY   (colorMode == DARK_MODE ? 7 : 7)
+#define CM_COLORS_DARKGREY    (colorMode == DARK_MODE ? 8 : 8)
+#define CM_COLORS_BLUE        (colorMode == DARK_MODE ? 9 : 9)
+#define CM_COLORS_GREEN       (colorMode == DARK_MODE ? 10 : 10)
+#define CM_COLORS_CYAN        (colorMode == DARK_MODE ? 11 : 11)
+#define CM_COLORS_RED         (colorMode == DARK_MODE ? 12 : 12)
+#define CM_COLORS_MAGENTA     (colorMode == DARK_MODE ? 13 : 13)
+#define CM_COLORS_YELLOW      (colorMode == DARK_MODE ? 14 : 14)
+#define CM_COLORS_WHITE       (colorMode == DARK_MODE ? 15 : 0)
+#define CM_COLORS_ORANGE      (colorMode == DARK_MODE ? 16 : 16)
+#define CM_COLORS_GREENYELLOW (colorMode == DARK_MODE ? 17 : 17)
+#define CM_COLORS_PINK        (colorMode == DARK_MODE ? 18 : 18)
 
 const uint32_t colors[][2] = {
     { TFT_BLACK, RGB_TO_COLOR(  0,   0,   0) },

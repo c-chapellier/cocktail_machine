@@ -28,7 +28,7 @@ public:
                 pageContentBox.getCaseWidth(),
                 pageContentBox.getCaseHeight(),
                 colors[recipes[i].getColorCode()][FORMAT_COLOR_16],
-                TFT_BLACK,
+                colors[DEFAULT_BACKGROUND_COLOR][FORMAT_COLOR_16],
                 colors[recipes[i].getColorCode()][FORMAT_COLOR_16],
                 (char *)recipes[i].getName(),
                 2,

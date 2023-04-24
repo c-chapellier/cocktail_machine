@@ -19,7 +19,19 @@ public:
     {
         Page::init();
 
-        this->menuPageBtn.initButton(&tft, H_SPACING + 40, pageContentBox.getCaseCenterY(0), 80, pageContentBox.getCaseHeight()/2, TFT_WHITE, TFT_BLACK, TFT_WHITE, (char *)"<-", 2, 2);
+        this->menuPageBtn.initButton(
+            &tft,
+            H_SPACING + 40,
+            pageContentBox.getCaseCenterY(0),
+            80,
+            pageContentBox.getCaseHeight() / 2,
+            colors[MENU_PAGE_BUTTON_OUTLINE_COLOR][FORMAT_COLOR_16],
+            colors[MENU_PAGE_BUTTON_BACKGROUND_COLOR][FORMAT_COLOR_16],
+            colors[MENU_PAGE_BUTTON_TEXT_COLOR][FORMAT_COLOR_16],
+            (char *)"<-",
+            2,
+            2
+        );
     }
 
     void render()

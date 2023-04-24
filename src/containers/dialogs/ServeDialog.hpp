@@ -21,9 +21,44 @@ public:
     {
         Dialog::init();
 
-        this->titleContainer.initButton(&tft, pageContentBox.getCenterX(), dialogContentBox.getCaseCenterY(0), pageContentBox.getCaseWidth(), pageContentBox.getCaseHeight(), TFT_WHITE, TFT_BLACK, TFT_WHITE, (char *)"Lets get this done", 2, 2);
-        this->startBtn.initButton(&tft, dialogContentBox.getCaseCenterX(6), dialogContentBox.getCaseCenterY(6), dialogContentBox.getCaseWidth(), dialogContentBox.getCaseHeight(), TFT_WHITE, TFT_GREEN, TFT_WHITE, (char *)"START", 2, 2);
-        this->stopBtn.initButton(&tft, dialogContentBox.getCaseCenterX(7), dialogContentBox.getCaseCenterY(7), dialogContentBox.getCaseWidth(), dialogContentBox.getCaseHeight(), TFT_WHITE, TFT_RED, TFT_WHITE, (char *)"STOP", 2, 2);
+        this->titleContainer.initButton(&tft,
+            pageContentBox.getCenterX(),
+            dialogContentBox.getCaseCenterY(0),
+            pageContentBox.getCaseWidth(),
+            pageContentBox.getCaseHeight(),
+            colors[DEFAULT_OUTLINE_COLOR][FORMAT_COLOR_16],
+            colors[DEFAULT_BACKGROUND_COLOR][FORMAT_COLOR_16],
+            colors[DEFAULT_TEXT_COLOR][FORMAT_COLOR_16],
+            (char *)"Lets get this done",
+            2,
+            2
+        );
+
+        this->startBtn.initButton(&tft,
+            dialogContentBox.getCaseCenterX(6),
+            dialogContentBox.getCaseCenterY(6),
+            dialogContentBox.getCaseWidth(),
+            dialogContentBox.getCaseHeight(),
+            colors[START_BUTTON_OUTLINE_COLOR][FORMAT_COLOR_16],
+            colors[START_BUTTON_BACKGROUND_COLOR][FORMAT_COLOR_16],
+            colors[START_BUTTON_TEXT_COLOR][FORMAT_COLOR_16],
+            (char *)"START",
+            2,
+            2
+        );
+
+        this->stopBtn.initButton(&tft,
+            dialogContentBox.getCaseCenterX(7),
+            dialogContentBox.getCaseCenterY(7),
+            dialogContentBox.getCaseWidth(),
+            dialogContentBox.getCaseHeight(),
+            colors[STOP_BUTTON_OUTLINE_COLOR][FORMAT_COLOR_16],
+            colors[STOP_BUTTON_BACKGROUND_COLOR][FORMAT_COLOR_16],
+            colors[STOP_BUTTON_TEXT_COLOR][FORMAT_COLOR_16],
+            (char *)"STOP",
+            2,
+            2
+        );
         
         this->progressBar.init();
     }

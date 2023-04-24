@@ -18,7 +18,7 @@ void setup()
     
     tft.begin(tft.readID());
     tft.setRotation(LANDSCAPE);
-    tft.fillScreen(TFT_BLACK);
+    tft.fillScreen(colors[APP_BACKGROUND_COLOR][FORMAT_COLOR_16]);
 
     for (int i = 0; i < numPages; i++)
         pages[i]->init();

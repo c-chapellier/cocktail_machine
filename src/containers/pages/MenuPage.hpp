@@ -30,7 +30,7 @@ public:
                 pageContentBox.getCaseWidth(),
                 pageContentBox.getCaseHeight(),
                 colors[i + 1][FORMAT_COLOR_16],
-                TFT_BLACK,
+                colors[DEFAULT_BACKGROUND_COLOR][FORMAT_COLOR_16],
                 colors[i + 1][FORMAT_COLOR_16],
                 (char *)translate(uiContainersNames[this->items[i]]),
                 2,

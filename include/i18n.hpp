@@ -20,6 +20,11 @@ const char *languagesNames[N_LANGUAGES][N_LANGUAGES] = {
     { "Allemand", "German", "Aleman", "Duits", "Deutsch" }
 };
 
+const char *colorModesNames[N_COLOR_MODES][N_LANGUAGES] = {
+    { "Sombre", "Dark", "Oscuro", "Donker", "Dunkel" },
+    { "Clair", "Light", "Claro", "Licht", "Hell" }
+};
+
 #define N_UI_CONTAINERS 7
 #define MENU_PAGE 0
 #define SERVICE_PAGE 1

@@ -38,8 +38,8 @@ public:
 
         int r1 = 90, r2 = 110;
 
-        // tft.drawCircle(originX, originY, 90, TFT_WHITE);
-        // tft.drawCircle(originX, originY, 110, TFT_WHITE);
+        // tft.drawCircle(originX, originY, 90, colors[ISICLAMP_LOGO_COLOR][FORMAT_COLOR_16]);
+        // tft.drawCircle(originX, originY, 110, colors[ISICLAMP_LOGO_COLOR][FORMAT_COLOR_16]);
 
         int n = 13;
         for (int i = 0; i < n; i++)
@@ -62,15 +62,15 @@ public:
 
             float angle5 = 2*PI * (i + 1) / n;
 
-            tft.drawLine(x1, y1, x2, y2, TFT_WHITE);
+            tft.drawLine(x1, y1, x2, y2, colors[ISICLAMP_LOGO_COLOR][FORMAT_COLOR_16]);
 
             for (float i = angle2; i < angle3; i += .005)
-                tft.drawPixel(originX + cos(i)*r2, originY + sin(i)*r2, TFT_WHITE);
+                tft.drawPixel(originX + cos(i)*r2, originY + sin(i)*r2, colors[ISICLAMP_LOGO_COLOR][FORMAT_COLOR_16]);
 
-            tft.drawLine(x3, y3, x4, y4, TFT_WHITE);
+            tft.drawLine(x3, y3, x4, y4, colors[ISICLAMP_LOGO_COLOR][FORMAT_COLOR_16]);
 
             for (float i = angle4; i < angle5; i += .005)
-                tft.drawPixel(originX + cos(i)*r1, originY + sin(i)*r1, TFT_WHITE);
+                tft.drawPixel(originX + cos(i)*r1, originY + sin(i)*r1, colors[ISICLAMP_LOGO_COLOR][FORMAT_COLOR_16]);
 
             delay(100);
         }
@@ -78,7 +78,7 @@ public:
         delay(100);
         
         tft.setCursor(originX - 45, originY - 7);
-        tft.setTextColor(TFT_WHITE);
+        tft.setTextColor(colors[ISICLAMP_LOGO_COLOR][FORMAT_COLOR_16]);
         tft.setTextSize(2);
         tft.print("ISICLAMP");
     }

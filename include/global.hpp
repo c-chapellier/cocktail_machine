@@ -6,8 +6,8 @@
 #include <TouchScreen.h>
 #include <Adafruit_NeoPixel.h>
 
-#include "i18n.hpp"
 #include "colors.hpp"
+#include "i18n.hpp"
 #include "settings.hpp"
 
 #define LANDSCAPE 1

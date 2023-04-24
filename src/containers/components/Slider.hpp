@@ -19,21 +19,21 @@ public:
 
     virtual void render()
     {
-        tft.drawRect(this->x, this->y, this->w, this->h, TFT_WHITE);
-        tft.fillRect(this->x + 2, this->y + 2, this->w - 4, this->h - 4, TFT_BLACK);
-        tft.fillRect(this->x + 2, this->y + 2, ((long int)(this->w - 4)) * this->value/100, this->h - 4, TFT_WHITE);
+        tft.drawRect(this->x, this->y, this->w, this->h, colors[SLIDER_OUTLINE_COLOR][FORMAT_COLOR_16]);
+        tft.fillRect(this->x + 2, this->y + 2, this->w - 4, this->h - 4, colors[SLIDER_BACKGROUND_COLOR][FORMAT_COLOR_16]);
+        tft.fillRect(this->x + 2, this->y + 2, ((long int)(this->w - 4)) * this->value/100, this->h - 4, colors[SLIDER_FILL_COLOR][FORMAT_COLOR_16]);
 
         if (this->name != NULL)
         {
             tft.setCursor(this->x, this->y);
-            tft.setTextColor(TFT_RED, TFT_CYAN);
+            tft.setTextColor(colors[SLIDER_LABEL_TEXT_COLOR][FORMAT_COLOR_16], colors[SLIDER_LABEL_BACKGROUND_COLOR][FORMAT_COLOR_16]);
             tft.setTextSize(2);
             tft.setTextWrap(true);
             tft.print(this->name);
         }
 
         tft.setCursor(this->x, this->y + 18);
-        tft.setTextColor(TFT_CYAN, TFT_RED);
+        tft.setTextColor(colors[SLIDER_VALUE_TEXT_COLOR][FORMAT_COLOR_16], colors[SLIDER_VALUE_BACKGROUND_COLOR][FORMAT_COLOR_16]);
         tft.setTextSize(2);
         tft.setTextWrap(true);
         tft.print(this->value);
