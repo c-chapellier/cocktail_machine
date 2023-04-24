@@ -27,7 +27,6 @@ public:
         this->leds.show();
     }
 
-    // void setPixelColor(uint16_t n, uint8_t r, uint8_t g, uint8_t b);
     void update()
     {
         switch (this->mode)

@@ -23,6 +23,17 @@ public:
     {
         NavigablePage::render();
 
+        logoIsiclamp();
+        // tft.drawRGBBitmap(pageContentBox.getCaseX(0), pageContentBox.getCaseY(0), bmp, pageContentBox.getW() - pageContentBox.getHSpacing()*2, pageContentBox.getH() - pageContentBox.getVSpacing()*2);
+    }
+
+    int update(bool down)
+    {
+        return NavigablePage::update(down);
+    }
+
+    void logoIsiclamp()
+    {
         int originX = dialogContentBox.getCenterX(), originY = dialogContentBox.getCenterY();
 
         int r1 = 90, r2 = 110;
@@ -70,12 +81,5 @@ public:
         tft.setTextColor(TFT_WHITE);
         tft.setTextSize(2);
         tft.print("ISICLAMP");
-
-        // tft.drawRGBBitmap(pageContentBox.getCaseX(0), pageContentBox.getCaseY(0), bmp, pageContentBox.getW() - pageContentBox.getHSpacing()*2, pageContentBox.getH() - pageContentBox.getVSpacing()*2);
-    }
-
-    int update(bool down)
-    {
-        return NavigablePage::update(down);
     }
 };
