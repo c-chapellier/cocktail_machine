@@ -9,7 +9,7 @@ class LevelSensor : public Hardware
         const int pin ;
     public :
         LevelSensor( int pin) : pin(pin) 
-        {};
+        {}
     void LevelSensor::setup(void)
     {
         pinMode(pin,OUTPUT);
