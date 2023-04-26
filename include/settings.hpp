@@ -15,8 +15,9 @@
 #define PIN_SENSOR_5 52
 #define PIN_SENSOR_6 53
 
-#define STEP_PIN_MOTOR 
-#define DIR_PIN_MOTOR
+#define STEP_PIN_MOTOR 54
+#define DIR_PIN_MOTOR 55
+#define REVOLUTION_STEP 200
 
 #define MIN_PRESSURE 0
 #define MAX_PRESSURE 1000
