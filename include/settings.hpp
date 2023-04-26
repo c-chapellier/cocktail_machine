@@ -8,6 +8,16 @@
 #define RGB_STRIP_SIGNAL_PIN 47
 #define RGB_STRIP_LEDS_COUNT 120
 
+#define PIN_SENSOR_1 48
+#define PIN_SENSOR_2 49
+#define PIN_SENSOR_3 50
+#define PIN_SENSOR_4 51
+#define PIN_SENSOR_5 52
+#define PIN_SENSOR_6 53
+
+#define STEP_PIN_MOTOR 
+#define DIR_PIN_MOTOR
+
 #define MIN_PRESSURE 0
 #define MAX_PRESSURE 1000
 
