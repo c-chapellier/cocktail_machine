@@ -58,14 +58,17 @@ int selectedRecipe = 0;
 #include "hardware/RGBStrip.hpp"
 #include "hardware/LevelSensor.hpp"
 #include "hardware/StepMotor.hpp"
+#define NB_SENSOR 6
 
 RGBStrip rgbStrip(RGB_STRIP_LEDS_COUNT, RGB_STRIP_SIGNAL_PIN, RGBStrip::Mode::RAINBOW);
-LevelSensor sensor1(PIN_SENSOR_1);
-LevelSensor sensor2(PIN_SENSOR_2);
-LevelSensor sensor3(PIN_SENSOR_3);
-LevelSensor sensor4(PIN_SENSOR_4);
-LevelSensor sensor5(PIN_SENSOR_5);
-LevelSensor sensor6(PIN_SENSOR_6);
+LevelSensor sensor[NB_SENSOR] = {
+    LevelSensor(PIN_SENSOR_1),
+    LevelSensor(PIN_SENSOR_2),
+    LevelSensor(PIN_SENSOR_3),
+    LevelSensor(PIN_SENSOR_4),
+    LevelSensor(PIN_SENSOR_5),
+    LevelSensor(PIN_SENSOR_6),
+};
 StepMotor stepMotor(DIR_PIN_MOTOR,STEP_PIN_MOTOR,REVOLUTION_STEP);
 
 
