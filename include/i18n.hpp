@@ -25,14 +25,16 @@ const char *colorModesNames[N_COLOR_MODES][N_LANGUAGES] = {
     { "Clair", "Light", "Claro", "Licht", "Hell" }
 };
 
-#define N_UI_CONTAINERS 7
-#define MENU_PAGE 0
-#define SERVICE_PAGE 1
-#define RECIPES_PAGE 2
-#define SERVE_DIALOG 3
-#define SETTINGS_PAGE 4
-#define ABOUT_PAGE 5
-#define EDIT_RECIPE_DIALOG 6
+#define N_UI_CONTAINERS 9
+#define MENU_PAGE                   0
+#define SERVICE_PAGE                1
+#define RECIPES_PAGE                2
+#define SERVE_DIALOG                3
+#define SETTINGS_PAGE               4
+#define ABOUT_PAGE                  5
+#define EDIT_RECIPE_DIALOG_1        6
+#define EDIT_RECIPE_DIALOG_2        7
+#define EDIT_RECIPE_NAME_DIALOG     8
 
 const char *uiContainersNames[N_UI_CONTAINERS][N_LANGUAGES] = {
     { "Menu", "Menu", "Menu", "Menu", "Menu" },
@@ -41,7 +43,9 @@ const char *uiContainersNames[N_UI_CONTAINERS][N_LANGUAGES] = {
     { "Service", "Service", "Servicio", "Service", "Service" },
     { "Parametres", "Settings", "Ajustes", "Instellingen", "Einstellungen" },
     { "A propos", "About", "Acerca de", "Over", "Über" },
-    { "Recettes", "Recipes", "Recetas", "Recepten", "Rezepte" }
+    { "Recettes", "Recipes", "Recetas", "Recepten", "Rezepte" },
+    { NULL, NULL, NULL, NULL, NULL },
+    { NULL, NULL, NULL, NULL, NULL }
 };
 
 #define N_PHYSICAL_CONTAINERS 6

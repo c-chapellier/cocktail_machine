@@ -68,7 +68,9 @@ RGBStrip rgbStrip(RGB_STRIP_LEDS_COUNT, RGB_STRIP_SIGNAL_PIN, RGBStrip::Mode::RA
 #include "containers/components/Slider.hpp"
 
 #include "containers/dialogs/Dialog.hpp"
-#include "containers/dialogs/EditRecipeDialog.hpp"
+#include "containers/dialogs/EditRecipeDialog1.hpp"
+#include "containers/dialogs/EditRecipeDialog2.hpp"
+#include "containers/dialogs/EditRecipeNameDialog.hpp"
 #include "containers/dialogs/ServeDialog.hpp"
 
 #include "containers/pages/Page.hpp"
