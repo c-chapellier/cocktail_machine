@@ -10,12 +10,12 @@ class LevelSensor : public Hardware
     public :
         LevelSensor( int pin) : pin(pin) 
         {}
-    void LevelSensor::setup(void)
+    void init(void)
     {
         pinMode(pin,OUTPUT);
     }
 
-    bool LevelSensor::LiquidDetected(void)
+    bool LiquidDetected(void)
 
     {
         if(digitalRead(pin)==0)

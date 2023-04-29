@@ -12,13 +12,13 @@ class StepMotor : public Hardware
         StepMotor(int _dirPin,int _stepPin,int _stepsPerRevolution) : dirPin(_dirPin), stepPin(_stepPin), stepsPerRevolution(_stepsPerRevolution)
         {}
 
-        void StepMotor::setup(void)
+        void init(void)
         {
             pinMode(dirPin,OUTPUT);
             pinMode(stepPin,OUTPUT);
         }
 
-        void StepMotor::direction(bool sens)
+        void direction(bool sens)
         {
             if(sens)
             {
@@ -30,7 +30,7 @@ class StepMotor : public Hardware
             }
         }
 
-        void StepMotor::run(int rapidity)
+        void run(int rapidity)
         {
             digitalWrite(stepPin,HIGH);
             delayMicroseconds(rapidity);
