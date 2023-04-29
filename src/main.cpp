@@ -24,6 +24,11 @@ void setup()
         pages[i]->init();
 
     rgbStrip.init();
+    for (int i = 0; i<NB_TANKS;i++)
+    {
+        electroValve[i].init();
+        sensor[i].init();
+    }
 }
 
 int currentPage = MENU_PAGE;
