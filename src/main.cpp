@@ -24,6 +24,7 @@ void setup()
         pages[i]->init();
 
     rgbStrip.init();
+    stepMotor.init();
     for (int i = 0; i<NB_TANKS;i++)
     {
         electroValve[i].init();
