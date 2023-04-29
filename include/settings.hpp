@@ -15,6 +15,13 @@
 #define PIN_SENSOR_5 42
 #define PIN_SENSOR_6 41
 
+#define PIN_VALVE_1 38
+#define PIN_VALVE_2 37
+#define PIN_VALVE_3 36
+#define PIN_VALVE_4 35
+#define PIN_VALVE_5 34
+#define PIN_VALVE_6 33
+
 #define STEP_PIN_MOTOR 40
 #define DIR_PIN_MOTOR 39
 #define REVOLUTION_STEP 200
