@@ -1,0 +1,75 @@
+@startuml cocktail_machine_firmware_architecture
+
+
+skinparam backgroundColor #LightCyan
+
+
+!$PureAbstractClassColor = %lighten("#LightGoldenRodYellow", 0)
+!$AbstractClassColor = %lighten("#LightSalmon", 0)
+!$ConcreteClassColor = %lighten("#LightCoral", 0)
+
+
+package "Cocktail Machine Firmware" #LightBlue {
+
+    package "Hardware Controllers" #LightCyan {
+
+        agent "Hardware" as HARDWARE $PureAbstractClassColor
+        agent "Level Sensor" as LEVEL_SENSOR $ConcreteClassColor
+        agent "RGB LED Strip" as RGB_STRIP $ConcreteClassColor
+        agent "Stepper Motor" as STEPPER_MOTOR $ConcreteClassColor
+        agent "Valve" as VALVE $ConcreteClassColor
+    }
+
+    package "Data Structures & Utils" #LightCyan {
+
+        agent "Recipe" as RECIPE $ConcreteClassColor
+        agent "Box" as BOX $ConcreteClassColor
+    }
+
+    package "UI Components" #LightCyan {
+
+        agent "UI Container" as UI_CONTAINER $PureAbstractClassColor
+        agent "Page" as PAGE $AbstractClassColor
+        agent "Navigeable Page" as NAVIGEABLE_PAGE $AbstractClassColor
+        agent "About Page" as ABOUT_PAGE $ConcreteClassColor
+        agent "Menu Page" as MENU_PAGE $ConcreteClassColor
+        agent "Recipes Menu Page" as RECIPES_MENU_PAGE $ConcreteClassColor
+        agent "Settings Page" as SETTINGS_PAGE $ConcreteClassColor
+
+        agent "Dialog" as DIALOG $AbstractClassColor
+        agent "Edit Recipe Dialog" as EDIT_RECIPE_DIALOG $ConcreteClassColor
+        agent "Serve Dialog" as SERVE_DIALOG $ConcreteClassColor
+
+        agent "Slider" as SLIDER $ConcreteClassColor
+    }
+}
+
+
+HARDWARE -- LEVEL_SENSOR
+HARDWARE -- RGB_STRIP
+HARDWARE -- STEPPER_MOTOR
+HARDWARE -- VALVE
+
+
+UI_CONTAINER -- PAGE
+    PAGE -- MENU_PAGE
+    PAGE -- NAVIGEABLE_PAGE
+        NAVIGEABLE_PAGE -- ABOUT_PAGE
+        NAVIGEABLE_PAGE -- RECIPES_MENU_PAGE
+        NAVIGEABLE_PAGE -- SETTINGS_PAGE
+
+UI_CONTAINER -- DIALOG
+    DIALOG -- EDIT_RECIPE_DIALOG
+    DIALOG -- SERVE_DIALOG
+
+UI_CONTAINER -- SLIDER
+
+
+legend right
+    | Color | Type |
+    |<$PureAbstractClassColor>| Pure Virtual Class |
+    |<$AbstractClassColor>| Virtual Class |
+    |<$ConcreteClassColor>| Child Class |
+endlegend
+
+@enduml
