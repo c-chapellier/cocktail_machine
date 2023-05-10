@@ -22,7 +22,7 @@
 #define PIN_VALVE_5 34
 #define PIN_VALVE_6 33
 
-#define STEP_PIN_MOTOR 40
+#define STEP_PIN_MOTOR 41
 #define DIR_PIN_MOTOR 39
 #define REVOLUTION_STEP 200
 

@@ -29,6 +29,8 @@ public:
 
     void update()
     {
+        // this->leds.setBrightness(this->brightness);
+        // this->leds.fill(0xffffff, 0, this->leds.numPixels());
         switch (this->mode)
         {
         case RGBStrip::Mode::RAINBOW:
