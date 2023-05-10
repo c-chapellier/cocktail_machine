@@ -90,7 +90,9 @@ Valve electroValve[NB_TANKS]={
 #include "containers/components/Slider.hpp"
 
 #include "containers/dialogs/Dialog.hpp"
-#include "containers/dialogs/EditRecipeDialog.hpp"
+#include "containers/dialogs/EditRecipeDialog1.hpp"
+#include "containers/dialogs/EditRecipeDialog2.hpp"
+#include "containers/dialogs/EditRecipeNameDialog.hpp"
 #include "containers/dialogs/ServeDialog.hpp"
 
 #include "containers/pages/Page.hpp"
