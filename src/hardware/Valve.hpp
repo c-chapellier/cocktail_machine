@@ -4,26 +4,33 @@
 
 class Valve : public Hardware
 {
-    private :
-        int pin;
-        bool state;//between opened and closed
-    public : 
-        Valve(int pin, bool state) : pin(pin),state(state){}
-        void init(void)
-        {
-            pinMode(pin,OUTPUT);
-            state = false;
-        };
-        void valveState(bool opening)
-        {
-            if(opening == true)
-            {
-                digitalWrite(pin,HIGH);
-            }
-            else
-            {
-                digitalWrite(pin,LOW);
-            }
-            state = opening;
-        };
+private :
+    const int pin;
+    bool isOpen = false;
+
+public : 
+    Valve(int pin)
+        : pin(pin)
+    {}
+
+    void init(void)
+    {
+        pinMode(this->pin, OUTPUT);
+    }
+
+    void open()
+    {
+        if (isOpen)
+            return;
+        digitalWrite(this->pin, HIGH);
+        this->isOpen = true;
+    }
+
+    void close()
+    {
+        if (!isOpen)
+            return;
+        digitalWrite(this->pin, LOW);
+        this->isOpen = false;
+    }
 };

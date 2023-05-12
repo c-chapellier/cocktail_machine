@@ -5,25 +5,31 @@
  *                         HARDWARE CONFIG                         *
 \* *************************************************************** */
 
-#define RGB_STRIP_SIGNAL_PIN 47
+#define NB_TANKS 6
+
+#define RGB_STRIP_PIN_SIGNAL 47
 #define RGB_STRIP_LEDS_COUNT 120
 
-#define PIN_SENSOR_1 46
-#define PIN_SENSOR_2 45
-#define PIN_SENSOR_3 44
-#define PIN_SENSOR_4 43
-#define PIN_SENSOR_5 42
-#define PIN_SENSOR_6 41
+#define LEVEL_SENSOR_1_PIN 46
+#define LEVEL_SENSOR_2_PIN 45
+#define LEVEL_SENSOR_3_PIN 44
+#define LEVEL_SENSOR_4_PIN 43
+#define LEVEL_SENSOR_5_PIN 42
+#define LEVEL_SENSOR_6_PIN 41
 
-#define PIN_VALVE_1 38
-#define PIN_VALVE_2 37
-#define PIN_VALVE_3 36
-#define PIN_VALVE_4 35
-#define PIN_VALVE_5 34
-#define PIN_VALVE_6 33
+#define VALVE_1_PIN 38
+#define VALVE_2_PIN 37
+#define VALVE_3_PIN 36
+#define VALVE_4_PIN 35
+#define VALVE_5_PIN 34
+#define VALVE_6_PIN 33
 
-#define STEP_PIN_MOTOR 41
-#define DIR_PIN_MOTOR 39
+#define LOAD_CELL_PIN_DATA 32
+#define LOAD_CELL_PIN_CLOCK 31
+#define LOAD_CELL_CALIBRATION_FACTOR -2170.0    // This value is obtained by using the SparkFun_HX711_Calibration sketch
+
+#define STEPPER_MOTOR_PIN_STEP 41
+#define STEPPER_MOTOR_PIN_DIR 39
 #define REVOLUTION_STEP 200
 
 #define MIN_PRESSURE 0

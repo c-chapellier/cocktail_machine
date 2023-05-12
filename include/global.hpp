@@ -5,6 +5,7 @@
 #include <MCUFRIEND_kbv.h>
 #include <TouchScreen.h>
 #include <Adafruit_NeoPixel.h>
+#include <HX711.h>
 
 #include "colors.hpp"
 #include "i18n.hpp"
@@ -17,7 +18,7 @@ MCUFRIEND_kbv tft;
 TouchScreen ts(XP, YP, XM, YM, 300);
 
 int touchX, touchY;
-bool touchGetXY();
+bool getTouch();
 
 void setup();
 
@@ -57,29 +58,33 @@ int selectedRecipe = 0;
 #include "hardware/Hardware.hpp"
 #include "hardware/RGBStrip.hpp"
 #include "hardware/LevelSensor.hpp"
-#include "hardware/StepMotor.hpp"
+#include "hardware/StepperMotor.hpp"
 #include "hardware/Valve.hpp"
-#define NB_TANKS 6
+#include "hardware/LoadCell.hpp"
 
-RGBStrip rgbStrip(RGB_STRIP_LEDS_COUNT, RGB_STRIP_SIGNAL_PIN, RGBStrip::Mode::RAINBOW);
-LevelSensor sensor[NB_TANKS] = {
-    LevelSensor(PIN_SENSOR_1),
-    LevelSensor(PIN_SENSOR_2),
-    LevelSensor(PIN_SENSOR_3),
-    LevelSensor(PIN_SENSOR_4),
-    LevelSensor(PIN_SENSOR_5),
-    LevelSensor(PIN_SENSOR_6),
-};
-StepMotor stepMotor(DIR_PIN_MOTOR,STEP_PIN_MOTOR,REVOLUTION_STEP);
-Valve electroValve[NB_TANKS]={
-    Valve(PIN_VALVE_1,false),
-    Valve(PIN_VALVE_2,false),
-    Valve(PIN_VALVE_3,false),
-    Valve(PIN_VALVE_4,false),
-    Valve(PIN_VALVE_5,false),
-    Valve(PIN_VALVE_6,false),
+RGBStrip rgbStrip(RGB_STRIP_LEDS_COUNT, RGB_STRIP_PIN_SIGNAL, RGBStrip::Mode::RAINBOW);
+
+LevelSensor levelSensors[NB_TANKS] = {
+    LevelSensor(LEVEL_SENSOR_1_PIN),
+    LevelSensor(LEVEL_SENSOR_2_PIN),
+    LevelSensor(LEVEL_SENSOR_3_PIN),
+    LevelSensor(LEVEL_SENSOR_4_PIN),
+    LevelSensor(LEVEL_SENSOR_5_PIN),
+    LevelSensor(LEVEL_SENSOR_6_PIN),
 };
 
+StepperMotor stepperMotor(STEPPER_MOTOR_PIN_DIR, STEPPER_MOTOR_PIN_STEP);
+
+Valve valves[NB_TANKS] = {
+    Valve(VALVE_1_PIN),
+    Valve(VALVE_2_PIN),
+    Valve(VALVE_3_PIN),
+    Valve(VALVE_4_PIN),
+    Valve(VALVE_5_PIN),
+    Valve(VALVE_6_PIN),
+};
+
+LoadCell loadCell(LOAD_CELL_PIN_DATA, LOAD_CELL_PIN_CLOCK);
 
 /* *************************************************************** *\
  *                          UI_CONTAINERS                          *

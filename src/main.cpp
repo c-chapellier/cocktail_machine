@@ -26,11 +26,11 @@ void setup()
         pages[i]->init();
 
     rgbStrip.init();
-    stepMotor.init();
+    stepperMotor.init();
     for (int i = 0; i<NB_TANKS;i++)
     {
-        electroValve[i].init();
-        sensor[i].init();
+        valves[i].init();
+        levelSensors[i].init();
     }
 }
 
@@ -45,7 +45,7 @@ void loop()
         pageChanged = false;
     }
 
-    bool down = touchGetXY();
+    bool down = getTouch();
     int nextPage = pages[currentPage]->update(down);
 
     if (nextPage != -1)
@@ -57,7 +57,7 @@ void loop()
     rgbStrip.update();
 }
 
-bool touchGetXY()
+bool getTouch()
 {
     TSPoint p = ts.getPoint();
     

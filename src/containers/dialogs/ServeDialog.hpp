@@ -115,7 +115,7 @@ public:
 
     void serveRecipe()
     {
-        electroValve[0].valveState(true);
+        valves[0].open();
 
         rgbStrip.setMode(RGBStrip::Mode::UNICOLOR);
         rgbStrip.setUnicolorModeColor(colors[recipes[selectedRecipe].getColorCode()][FORMAT_COLOR_32]);
@@ -126,13 +126,13 @@ public:
             this->progressBar.render();
 
             for (int j = 0; j < 10; j++)
-                stepMotor.run(100);
+                stepperMotor.step(100);
 
             rgbStrip.setBrightness(i * 25);
             rgbStrip.update();
 
             delay(500);
-            if (checkStop(touchGetXY())) return;
+            if (checkStop(getTouch())) return;
         }
 
         for (int i = 0; i < 3; i++)
@@ -140,21 +140,21 @@ public:
             rgbStrip.setBrightness(0);
             rgbStrip.update();
             delay(500);
-            if (checkStop(touchGetXY())) return;
+            if (checkStop(getTouch())) return;
 
             for (int j = 0; j < 10; j++)
-                stepMotor.run(100);
+                stepperMotor.step(100);
 
             rgbStrip.setBrightness(255);
             rgbStrip.update();
             delay(500);
-            if (checkStop(touchGetXY())) return;
+            if (checkStop(getTouch())) return;
         }
 
         rgbStrip.setMode(RGBStrip::Mode::RAINBOW);
         rgbStrip.setBrightness(255);
         rgbStrip.update();
 
-        electroValve[0].valveState(false);
+        valves[0].close();
     }
 };

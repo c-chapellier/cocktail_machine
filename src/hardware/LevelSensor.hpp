@@ -5,26 +5,21 @@
 
 class LevelSensor : public Hardware
 {
-    private : 
-        const int pin ;
-    public :
-        LevelSensor( int pin) : pin(pin) 
-        {}
+private : 
+    const int pin;
+
+public :
+    LevelSensor(int pin)
+        : pin(pin) 
+    {}
+
     void init(void)
     {
-        pinMode(pin,OUTPUT);
+        pinMode(this->pin, INPUT);
     }
 
-    bool LiquidDetected(void)
-
+    bool read(void) const
     {
-        if(digitalRead(pin)==0)
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
+        return digitalRead(this->pin);
     }
 };
