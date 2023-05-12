@@ -6,8 +6,8 @@ class Recipe
 private:
     const char *name;
     const uint8_t color_code;
+    const bool haveIce;
     int quantities[6];
-    bool haveIce;
 
     int getQuantitiesSum() const
     {
@@ -15,11 +15,6 @@ private:
         for (int i = 0; i < 6; i++)
             sum += quantities[i];
         return sum;
-    }
-
-    int getProportion(int index) const
-    {
-        return quantities[index] / getQuantitiesSum();
     }
 
 public:
@@ -30,20 +25,28 @@ public:
             this->quantities[i] = quantities[i];
     }
 
-    void serve(int volume)
-    {
-        // getProportion(0) * volume
-    }
-
     const char *getName() const
     {
         return name;
     }
 
-    int getQuantity(int index) const
+    bool isIced() const
+    {
+        return this->haveIce;
+    }
+
+    double getQuantity(int index) const
     {
         if (index < 0 || index > 5) return -1;
+        
         return quantities[index];
+    }
+
+    double getProportion(int index) const
+    {
+        if (index < 0 || index > 5) return -1;
+        
+        return ((double)quantities[index]) / getQuantitiesSum();
     }
 
     int setQuantity(int index, int value)

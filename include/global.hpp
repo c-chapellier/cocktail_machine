@@ -65,26 +65,41 @@ int selectedRecipe = 0;
 RGBStrip rgbStrip(RGB_STRIP_LEDS_COUNT, RGB_STRIP_PIN_SIGNAL, RGBStrip::Mode::RAINBOW);
 
 LevelSensor levelSensors[NB_TANKS] = {
+    LevelSensor(LEVEL_SENSOR_0_PIN),
     LevelSensor(LEVEL_SENSOR_1_PIN),
     LevelSensor(LEVEL_SENSOR_2_PIN),
     LevelSensor(LEVEL_SENSOR_3_PIN),
     LevelSensor(LEVEL_SENSOR_4_PIN),
-    LevelSensor(LEVEL_SENSOR_5_PIN),
-    LevelSensor(LEVEL_SENSOR_6_PIN),
+    LevelSensor(LEVEL_SENSOR_5_PIN)
 };
 
 StepperMotor stepperMotor(STEPPER_MOTOR_PIN_DIR, STEPPER_MOTOR_PIN_STEP);
 
 Valve valves[NB_TANKS] = {
+    Valve(VALVE_0_PIN),
     Valve(VALVE_1_PIN),
     Valve(VALVE_2_PIN),
     Valve(VALVE_3_PIN),
     Valve(VALVE_4_PIN),
-    Valve(VALVE_5_PIN),
-    Valve(VALVE_6_PIN),
+    Valve(VALVE_5_PIN)
 };
 
 LoadCell loadCell(LOAD_CELL_PIN_DATA, LOAD_CELL_PIN_CLOCK);
+
+/* *************************************************************** *\
+ *                              TANK                               *
+\* *************************************************************** */
+
+#include "Tank.hpp"
+
+Tank tanks[NB_TANKS] = {
+    Tank(0),
+    Tank(1),
+    Tank(2),
+    Tank(3),
+    Tank(4),
+    Tank(5)
+};
 
 /* *************************************************************** *\
  *                          UI_CONTAINERS                          *

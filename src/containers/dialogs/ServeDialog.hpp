@@ -9,6 +9,91 @@ private:
     Adafruit_GFX_Button startBtn, stopBtn;
     Adafruit_GFX_Button titleContainer;
     Slider progressBar = Slider(NULL, dialogContentBox.getCaseX(0), dialogContentBox.getCenterY() - dialogContentBox.getCaseHeight()/2, dialogContentBox.getCaseWidth()*2 + dialogContentBox.getHSpacing(), dialogContentBox.getCaseHeight());
+    const int nStep = 10;
+    int currentStep = 0;
+
+    int checkStop(bool down)
+    {
+        this->stopBtn.press(down && this->stopBtn.contains(touchX, touchY));
+
+        if (this->stopBtn.justReleased())
+            this->stopBtn.drawButton(false);
+
+        if (this->stopBtn.justPressed())
+        {
+            this->stopBtn.drawButton(true);
+            return 1;
+        }
+
+        return 0;
+    }
+
+    void startRoutine()
+    {
+        rgbStrip.setMode(RGBStrip::Mode::UNICOLOR);
+        rgbStrip.setUnicolorModeColor(colors[recipes[selectedRecipe].getColorCode()][FORMAT_COLOR_32]);
+    }
+
+    bool step()
+    {
+        if (this->checkStop(getTouch())) return false;
+        if (this->currentStep >= this->nStep) return true;
+
+        this->progressBar.setValue(this->currentStep * 10);
+        this->progressBar.render();
+
+        rgbStrip.setBrightness(this->currentStep * 25);
+        rgbStrip.update();
+
+        ++this->currentStep;
+        return true;
+    }
+
+    bool serveLiquid(int i)
+    {
+        valves[i].open();
+
+        long int startValve = millis(), startVolumeCount = startValve, now = startValve;
+        while (now - startValve < 1000)
+        {
+            if (tanks[i].checkLevel())
+                startVolumeCount = millis();
+        
+            if (this->checkStop(getTouch())) return false;
+
+            now = millis();
+        }
+
+        tanks[i].serve((now - startVolumeCount) * DEBIT_PER_MILLIS);
+        valves[i].close();
+        
+        this->step();
+
+        return true;
+    }
+
+    void endRoutine()
+    {
+        this->progressBar.setValue(100);
+        this->progressBar.render();
+
+        for (int i = 0; i < 3; ++i)
+        {
+            rgbStrip.setBrightness(0);
+            rgbStrip.update();
+            delay(500);
+            if (this->checkStop(getTouch())) return;
+
+            rgbStrip.setBrightness(255);
+            rgbStrip.update();
+            delay(500);
+            if (this->checkStop(getTouch())) return;
+        }
+
+        rgbStrip.setMode(RGBStrip::Mode::RAINBOW);
+        rgbStrip.setBrightness(255);
+        rgbStrip.update();
+    }
 
 public:
     ServeDialog()
@@ -91,70 +176,39 @@ public:
             return SERVICE_PAGE;
         }
 
-        if (checkStop(down))
+        if (this->checkStop(down))
             return SERVICE_PAGE;
 
         return -1;
     }
 
-    int checkStop(bool down)
+    bool serveRecipe()
     {
-        this->stopBtn.press(down && this->stopBtn.contains(touchX, touchY));
+        double volume = 33.0;
 
-        if (this->stopBtn.justReleased())
-            this->stopBtn.drawButton(false);
+        for (int i = 0; i < NB_TANKS; ++i)
+            if (tanks[i].canFill(recipes[selectedRecipe].getProportion(i) * volume))
+                return false;
 
-        if (this->stopBtn.justPressed())
+        this->startRoutine();
+
+        if (this->checkStop(getTouch())) return false;
+        if (this->step()) return false;
+
+        if (recipes[selectedRecipe].isIced())
         {
-            this->stopBtn.drawButton(true);
-            return 1;
+            stepperMotor.step(100);
         }
 
-        return 0;
-    }
+        if (this->checkStop(getTouch())) return false;
+        if (this->step()) return false;
 
-    void serveRecipe()
-    {
-        valves[0].open();
+        for (int i = 6; i < NB_TANKS; ++i)
+            if (recipes[selectedRecipe].getProportion(i) > 0.0)
+                if (!this->serveLiquid(i))
+                    return false;
 
-        rgbStrip.setMode(RGBStrip::Mode::UNICOLOR);
-        rgbStrip.setUnicolorModeColor(colors[recipes[selectedRecipe].getColorCode()][FORMAT_COLOR_32]);
-
-        for (int i = 0; i < 11; i++)
-        {
-            this->progressBar.setValue(i * 10);
-            this->progressBar.render();
-
-            for (int j = 0; j < 10; j++)
-                stepperMotor.step(100);
-
-            rgbStrip.setBrightness(i * 25);
-            rgbStrip.update();
-
-            delay(500);
-            if (checkStop(getTouch())) return;
-        }
-
-        for (int i = 0; i < 3; i++)
-        {
-            rgbStrip.setBrightness(0);
-            rgbStrip.update();
-            delay(500);
-            if (checkStop(getTouch())) return;
-
-            for (int j = 0; j < 10; j++)
-                stepperMotor.step(100);
-
-            rgbStrip.setBrightness(255);
-            rgbStrip.update();
-            delay(500);
-            if (checkStop(getTouch())) return;
-        }
-
-        rgbStrip.setMode(RGBStrip::Mode::RAINBOW);
-        rgbStrip.setBrightness(255);
-        rgbStrip.update();
-
-        valves[0].close();
+        this->endRoutine();
+        return true;
     }
 };
