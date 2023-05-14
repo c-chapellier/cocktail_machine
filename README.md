@@ -198,7 +198,7 @@ Project Link: [https://github.com/c-chapellier/cocktail_machine](https://github.
 <br />
 <div align="center">
   <a href="https://github.com/c-chapellier/cocktail_machine">
-    <img src="images/thanos.jpg" width="480" height="320">
+    <img src="images/thanos.jpg" width="540" height="320">
   </a>
 </div>
 
