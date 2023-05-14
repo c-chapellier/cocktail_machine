@@ -29,7 +29,7 @@
 #define LOAD_CELL_PIN_CLOCK 31
 #define LOAD_CELL_CALIBRATION_FACTOR -2170.0    // This value is obtained by using the SparkFun_HX711_Calibration sketch
 
-#define STEPPER_MOTOR_PIN_STEP 41
+#define STEPPER_MOTOR_PIN_STEP 40
 #define STEPPER_MOTOR_PIN_DIR 39
 #define REVOLUTION_STEP 200
 
