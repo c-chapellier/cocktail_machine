@@ -186,27 +186,31 @@ public:
     {
         double volume = 33.0;
 
-        for (int i = 0; i < NB_TANKS; ++i)
-            if (tanks[i].canFill(recipes[selectedRecipe].getProportion(i) * volume))
-                return false;
+        // for (int i = 0; i < NB_TANKS; ++i)
+        //     if (tanks[i].canFill(recipes[selectedRecipe].getProportion(i) * volume))
+        //         return false;
 
         this->startRoutine();
 
         if (this->checkStop(getTouch())) return false;
-        if (this->step()) return false;
+        if (!this->step()) return false;
 
         if (recipes[selectedRecipe].isIced())
         {
-            stepperMotor.step(100);
+            for (int i = 0; i < 200; ++i)
+            {
+                stepperMotor.step(2000);
+                // if (this->checkStop(getTouch())) return false;
+            }
         }
 
-        if (this->checkStop(getTouch())) return false;
-        if (this->step()) return false;
+        // if (this->checkStop(getTouch())) return false;
+        // if (this->step()) return false;
 
-        for (int i = 6; i < NB_TANKS; ++i)
-            if (recipes[selectedRecipe].getProportion(i) > 0.0)
-                if (!this->serveLiquid(i))
-                    return false;
+        // for (int i = 6; i < NB_TANKS; ++i)
+        //     if (recipes[selectedRecipe].getProportion(i) > 0.0)
+        //         if (!this->serveLiquid(i))
+        //             return false;
 
         this->endRoutine();
         return true;

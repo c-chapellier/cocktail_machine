@@ -17,7 +17,6 @@ public :
     {
         pinMode(this->dirPin, OUTPUT);
         pinMode(this->stepPin, OUTPUT);
-        this->setDirection(this->direction);
     }
 
     void setDirection(bool direction)
@@ -26,11 +25,11 @@ public :
         digitalWrite(this->dirPin, this->direction ? HIGH : LOW);
     }
 
-    void step(int delay)
+    void step(long delay)
     {
-        digitalWrite(stepPin, HIGH);
+        digitalWrite(this->stepPin, HIGH);
         delayMicroseconds(delay);
-        digitalWrite(stepPin, LOW);
+        digitalWrite(this->stepPin, LOW);
         delayMicroseconds(delay);
     }
 };
