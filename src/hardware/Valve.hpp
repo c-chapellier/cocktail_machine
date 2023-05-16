@@ -20,16 +20,18 @@ public :
 
     void open()
     {
-        if (isOpen)
+        if (this->isOpen)
             return;
+
         digitalWrite(this->pin, HIGH);
         this->isOpen = true;
     }
 
     void close()
     {
-        if (!isOpen)
+        if (!this->isOpen)
             return;
+
         digitalWrite(this->pin, LOW);
         this->isOpen = false;
     }

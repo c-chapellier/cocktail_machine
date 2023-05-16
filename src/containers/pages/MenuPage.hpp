@@ -6,8 +6,8 @@
 class MenuPage : public Page
 {
 private:
-    static const int nItems = 4;
-    const int items[MenuPage::nItems] = { SERVICE_PAGE, RECIPES_PAGE, SETTINGS_PAGE, ABOUT_PAGE };
+    static const int nItems = 5;
+    const int items[MenuPage::nItems] = { SERVICE_PAGE, RECIPES_PAGE, SETTINGS_PAGE, ABOUT_PAGE, MANUAL_CONTROL_PAGE };
     Adafruit_GFX_Button btns[MenuPage::nItems];
 
 public:

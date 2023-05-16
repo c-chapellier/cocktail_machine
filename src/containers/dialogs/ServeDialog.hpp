@@ -49,23 +49,28 @@ private:
         return true;
     }
 
-    bool serveLiquid(int i)
+    bool serveLiquid(int i, double volume)
     {
         valves[i].open();
 
         long int startValve = millis(), startVolumeCount = startValve, now = startValve;
-        while (now - startValve < 1000)
+        while (now - startValve < 1000*volume / DEBIT_PER_SECOND)
         {
-            if (tanks[i].checkLevel())
-                startVolumeCount = millis();
+            // if (tanks[i].checkLevel())
+            //     startVolumeCount = millis();
         
             if (this->checkStop(getTouch())) return false;
 
             now = millis();
         }
-
-        tanks[i].serve((now - startVolumeCount) * DEBIT_PER_MILLIS);
         valves[i].close();
+
+        Serial.println("Served " + String(volume) + "cl of " + String(i));
+        Serial.println("Time: " + String(now - startValve) + "ms");
+        Serial.println("Theoric time: " + String(1000*volume / DEBIT_PER_SECOND) + "ms");
+        Serial.println("Weight: " + String(loadCell.read()) + "g");
+
+        // tanks[i].serve((now - startVolumeCount) * DEBIT_PER_MILLIS);
         
         this->step();
 
@@ -184,7 +189,7 @@ public:
 
     bool serveRecipe()
     {
-        double volume = 33.0;
+        double volume = 27.0;
 
         // for (int i = 0; i < NB_TANKS; ++i)
         //     if (tanks[i].canFill(recipes[selectedRecipe].getProportion(i) * volume))
@@ -195,22 +200,37 @@ public:
         if (this->checkStop(getTouch())) return false;
         if (!this->step()) return false;
 
-        if (recipes[selectedRecipe].isIced())
+
+        if (recipes[selectedRecipe].getIceQuantity() > 0)
         {
-            for (int i = 0; i < 200; ++i)
+            for (int i = 0; i < 3; ++i)
             {
-                stepperMotor.step(2000);
-                // if (this->checkStop(getTouch())) return false;
+                stepperMotor.setDirection(false);
+                for(int x = 0; x < STEPPER_MOTOR_STEPS_PER_REVOLUTION * 16 / 4; x++)
+                    stepperMotor.step(-1);
+
+                delay(1000);
+
+                stepperMotor.setDirection(true);
+                for(int x = 0; x < STEPPER_MOTOR_STEPS_PER_REVOLUTION * 16 / 4; x++)
+                    stepperMotor.step(-1);
+
+                delay(1000);
+
+                if (this->checkStop(getTouch())) return false;
             }
         }
 
-        // if (this->checkStop(getTouch())) return false;
-        // if (this->step()) return false;
+        if (this->checkStop(getTouch())) return false;
+        if (!this->step()) return false;
 
-        // for (int i = 6; i < NB_TANKS; ++i)
-        //     if (recipes[selectedRecipe].getProportion(i) > 0.0)
-        //         if (!this->serveLiquid(i))
-        //             return false;
+        for (int i = 0; i < NB_TANKS; ++i)
+        {
+            double proportion = recipes[selectedRecipe].getProportion(i);
+
+            if (proportion > 0.0 && !this->serveLiquid(i, proportion * volume))
+                    return false;
+        }
 
         this->endRoutine();
         return true;

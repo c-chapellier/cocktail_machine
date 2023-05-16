@@ -20,10 +20,8 @@ public :
         this->loadCell.tare();                           // Assuming there is no weight on the loadCell at start up, reset the loadCell to 0
     }
 
-    long read()
+    float read()
     {
-        if (this->loadCell.wait_ready_timeout(1000))
-            return this->loadCell.read();
-        return -1;
+        return this->loadCell.get_units();
     }
 };

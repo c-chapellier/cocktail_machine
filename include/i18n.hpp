@@ -35,6 +35,7 @@ const char *colorModesNames[N_COLOR_MODES][N_LANGUAGES] = {
 #define EDIT_RECIPE_DIALOG_1        6
 #define EDIT_RECIPE_DIALOG_2        7
 #define EDIT_RECIPE_NAME_DIALOG     8
+#define MANUAL_CONTROL_PAGE         9
 
 const char *uiContainersNames[N_UI_CONTAINERS][N_LANGUAGES] = {
     { "Menu", "Menu", "Menu", "Menu", "Menu" },
@@ -45,7 +46,8 @@ const char *uiContainersNames[N_UI_CONTAINERS][N_LANGUAGES] = {
     { "A propos", "About", "Acerca de", "Over", "Über" },
     { "Recettes", "Recipes", "Recetas", "Recepten", "Rezepte" },
     { NULL, NULL, NULL, NULL, NULL },
-    { NULL, NULL, NULL, NULL, NULL }
+    { NULL, NULL, NULL, NULL, NULL },
+    { "Controle manuel", "Manual control", "Control manual", "Handmatige bediening", "Manuelle Steuerung" }
 };
 
 #define N_PHYSICAL_CONTAINERS 6

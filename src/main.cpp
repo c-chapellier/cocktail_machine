@@ -10,7 +10,8 @@ UIContainer *pages[] = {
     new AboutPage(),
     new EditRecipeDialog1(),
     new EditRecipeDialog2(),
-    new EditRecipeNameDialog()
+    new EditRecipeNameDialog(),
+    new ManualControlPage()
 };
 int numPages = sizeof(pages) / sizeof(pages[0]);
 
@@ -27,6 +28,7 @@ void setup()
 
     rgbStrip.init();
     stepperMotor.init();
+    loadCell.init();
     for (int i = 0; i<NB_TANKS;i++)
     {
         valves[i].init();
@@ -67,8 +69,8 @@ bool getTouch()
     bool pressed = (p.z > MIN_PRESSURE && p.z < MAX_PRESSURE);
     if (pressed)
     {
-        touchX = map(p.y, TS_RT, TS_LEFT, 0, 480);
-        touchY = map(p.x, TS_TOP, TS_BOT, 0, 320);
+        touchX = map(p.y, TS_LEFT, TS_RT, 0, 480);
+        touchY = map(p.x, TS_BOT, TS_TOP, 0, 320);
     }
     
     return pressed;

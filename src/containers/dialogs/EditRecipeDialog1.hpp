@@ -78,8 +78,9 @@ public:
 
         if (down && !this->container.contains(touchX, touchY))
         {
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 6; i++)
                 recipes[selectedRecipe].setQuantity(i, this->sliders[i].getValue());
+            recipes[selectedRecipe].setIceQuantity(this->sliders[6].getValue());
             return RECIPES_PAGE;
         }
 

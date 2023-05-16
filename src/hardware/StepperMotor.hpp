@@ -28,8 +28,8 @@ public :
     void step(long delay)
     {
         digitalWrite(this->stepPin, HIGH);
-        delayMicroseconds(delay);
+        delayMicroseconds(2);
         digitalWrite(this->stepPin, LOW);
-        delayMicroseconds(delay);
+        delayMicroseconds(500);
     }
 };
