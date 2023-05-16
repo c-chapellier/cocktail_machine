@@ -43,8 +43,8 @@ private:
         this->progressBar.setValue(this->currentStep * 10);
         this->progressBar.render();
 
-        rgbStrip.setBrightness(this->currentStep * 25);
-        rgbStrip.update();
+        // rgbStrip.setBrightness(this->currentStep * 25);
+        // rgbStrip.update();
 
         ++this->currentStep;
         return true;
@@ -100,8 +100,8 @@ private:
         long int startValve = millis(), startVolumeCount = startValve, now = startValve;
         while (now - startValve < 1000*volume / DEBIT_PER_SECOND)
         {
-            if (tanks[i].checkLevel())
-                startVolumeCount = millis();
+            // if (tanks[i].checkLevel())
+            //     startVolumeCount = millis();
         
             if (this->checkStop(getTouch())) return false;
 
@@ -114,9 +114,9 @@ private:
         Serial.println("Liquid: Theoric time: " + String(1000*volume / DEBIT_PER_SECOND) + "ms");
         Serial.println("Liquid: Weight: " + String(loadCell.readInGramms() - initialWeight) + "g");
 
-        tanks[i].serve((now - startVolumeCount) * (DEBIT_PER_SECOND / 1000.));
-        Serial.println("Liquid: tanks: volume total " + String(tanks[i].getVolume()) + "cl");
-        Serial.println("Liquid: tanks: volume restant " + String((now - startVolumeCount) * (DEBIT_PER_SECOND / 1000.)) + "cl");
+        // tanks[i].serve((now - startVolumeCount) * (DEBIT_PER_SECOND / 1000.));
+        // Serial.println("Liquid: tanks: volume total " + String(tanks[i].getVolume()) + "cl");
+        // Serial.println("Liquid: tanks: volume restant " + String((now - startVolumeCount) * (DEBIT_PER_SECOND / 1000.)) + "cl");
         
         this->step();
 
@@ -238,14 +238,14 @@ public:
         double volume = 33.0;
 
         // do not take into account ice volume
-        for (int i = 0; i < TANKS_COUNT; ++i)
-        {
-            if (tanks[i].canFill(recipes[selectedRecipe].getProportion(i) * volume))
-            {
-                Serial.println("tank can fill False " + String(i));
-                return false;
-            }
-        }
+        // for (int i = 0; i < TANKS_COUNT; ++i)
+        // {
+        //     if (tanks[i].canFill(recipes[selectedRecipe].getProportion(i) * volume))
+        //     {
+        //         Serial.println("tank can fill False " + String(i));
+        //         return false;
+        //     }
+        // }
 
         this->startRoutine();
 
@@ -270,8 +270,14 @@ public:
         {
             double proportion = recipes[selectedRecipe].getProportion(i);
 
-            if (proportion > 0.0 && !this->serveLiquid(i, proportion * (volume - iceVolume)))
+            if (proportion > 0.0)
+            {   
+                rgbStrip.setUnicolorModeColor(colors[8 + i][FORMAT_COLOR_32]);
+                rgbStrip.update();
+
+                if (!this->serveLiquid(i, proportion * (volume - iceVolume)))
                     return false;
+            }
         }
 
         this->endRoutine();
