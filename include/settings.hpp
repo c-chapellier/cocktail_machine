@@ -5,19 +5,7 @@
  *                         HARDWARE CONFIG                         *
 \* *************************************************************** */
 
-#define NB_TANKS 6
-
-#define RGB_STRIP_PIN_SIGNAL 25
-#define RGB_STRIP_LEDS_COUNT 120
-
-#define LEVEL_SENSOR_0_PIN 31
-#define LEVEL_SENSOR_1_PIN 35
-#define LEVEL_SENSOR_2_PIN 37
-#define LEVEL_SENSOR_3_PIN 39
-#define LEVEL_SENSOR_4_PIN 41
-#define LEVEL_SENSOR_5_PIN 33
-
-#define DEBIT_PER_SECOND 4.5
+#define DEBIT_PER_SECOND 5.1
 
 #define VALVE_0_PIN 51
 #define VALVE_1_PIN 53
@@ -26,13 +14,25 @@
 #define VALVE_4_PIN 45
 #define VALVE_5_PIN 43
 
-#define LOAD_CELL_PIN_DATA 23
-#define LOAD_CELL_PIN_CLOCK 27
-#define LOAD_CELL_CALIBRATION_FACTOR -2170.0    // This value is obtained by using the SparkFun_HX711_Calibration sketch
+#define LEVEL_SENSOR_0_PIN 31
+#define LEVEL_SENSOR_1_PIN 35
+#define LEVEL_SENSOR_2_PIN 37
+#define LEVEL_SENSOR_3_PIN 39
+#define LEVEL_SENSOR_4_PIN 41
+#define LEVEL_SENSOR_5_PIN 33
 
-#define STEPPER_MOTOR_PIN_STEP 24
-#define STEPPER_MOTOR_PIN_DIR 23
-#define STEPPER_MOTOR_STEPS_PER_REVOLUTION 200
+#define LOAD_CELL_PIN_DATA              23
+#define LOAD_CELL_PIN_CLOCK             27
+#define LOAD_CELL_CALIBRATION_FACTOR    47300.0    // This value is obtained by using the SparkFun_HX711_Calibration sketch
+
+#define STEPPER_MOTOR_PIN_STEP                  24
+#define STEPPER_MOTOR_PIN_DIR                   22
+#define STEPPER_MOTOR_STEPS_PER_REVOLUTION      200
+#define STEPPER_MOTOR_MICROSTEPS_PER_STEP       16
+#define STEPPER_MOTOR_MICROSTEPS_PER_REVOLUTION (STEPPER_MOTOR_STEPS_PER_REVOLUTION * STEPPER_MOTOR_MICROSTEPS_PER_STEP)
+
+#define RGB_STRIP_PIN_SIGNAL 25
+#define RGB_STRIP_LEDS_COUNT 120
 
 #define MIN_PRESSURE 0
 #define MAX_PRESSURE 1000

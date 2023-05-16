@@ -6,6 +6,7 @@
 class ServeDialog : public Dialog
 {
 private:
+    static const double ICE_GRAMMS_TO_CL = .07;
     Adafruit_GFX_Button startBtn, stopBtn;
     Adafruit_GFX_Button titleContainer;
     Slider progressBar = Slider(NULL, dialogContentBox.getCaseX(0), dialogContentBox.getCenterY() - dialogContentBox.getCaseHeight()/2, dialogContentBox.getCaseWidth()*2 + dialogContentBox.getHSpacing(), dialogContentBox.getCaseHeight());
@@ -49,15 +50,58 @@ private:
         return true;
     }
 
+    bool serveIce(double desiredWeightInGramms)
+    {
+        if (desiredWeightInGramms <= 0.0)
+            return true;
+
+        double initialWeight = loadCell.readInGramms();
+        int i = 0;
+        
+        Serial.println("Ice: desiredWeightInGramms " + String(desiredWeightInGramms) + "g");
+
+        while (loadCell.readInGramms() - initialWeight < desiredWeightInGramms)
+        {
+            Serial.println("Ice: i: " + String(i));
+            Serial.println("Ice: Weight: " + String(loadCell.readInGramms() - initialWeight) + "g");
+
+            if (i > 10)
+                break;
+
+            stepperMotor.setDirection(false);
+            for(int x = 0; x < STEPPER_MOTOR_MICROSTEPS_PER_REVOLUTION * 2./16.; x++)
+                stepperMotor.step();
+
+            delay(100);
+            if (this->checkStop(getTouch())) return false;
+
+            stepperMotor.setDirection(true);
+            for(int x = 0; x < STEPPER_MOTOR_MICROSTEPS_PER_REVOLUTION * 2./16.; x++)
+                stepperMotor.step();
+
+            delay(200);
+            if (this->checkStop(getTouch())) return false;
+            
+            ++i;
+        }
+
+        Serial.println("Ice: i: " + String(i));
+        Serial.println("Ice: Weight: " + String(loadCell.readInGramms() - initialWeight) + "g");
+
+        return true;
+    }
+
     bool serveLiquid(int i, double volume)
     {
+        double initialWeight = loadCell.readInGramms();
+        
         valves[i].open();
 
         long int startValve = millis(), startVolumeCount = startValve, now = startValve;
         while (now - startValve < 1000*volume / DEBIT_PER_SECOND)
         {
-            // if (tanks[i].checkLevel())
-            //     startVolumeCount = millis();
+            if (tanks[i].checkLevel())
+                startVolumeCount = millis();
         
             if (this->checkStop(getTouch())) return false;
 
@@ -65,12 +109,14 @@ private:
         }
         valves[i].close();
 
-        Serial.println("Served " + String(volume) + "cl of " + String(i));
-        Serial.println("Time: " + String(now - startValve) + "ms");
-        Serial.println("Theoric time: " + String(1000*volume / DEBIT_PER_SECOND) + "ms");
-        Serial.println("Weight: " + String(loadCell.read()) + "g");
+        Serial.println("Liquid: Served " + String(volume) + "cl of " + String(i));
+        Serial.println("Liquid: Time: " + String(now - startValve) + "ms");
+        Serial.println("Liquid: Theoric time: " + String(1000*volume / DEBIT_PER_SECOND) + "ms");
+        Serial.println("Liquid: Weight: " + String(loadCell.readInGramms() - initialWeight) + "g");
 
-        // tanks[i].serve((now - startVolumeCount) * DEBIT_PER_MILLIS);
+        tanks[i].serve((now - startVolumeCount) * (DEBIT_PER_SECOND / 1000.));
+        Serial.println("Liquid: tanks: volume total " + String(tanks[i].getVolume()) + "cl");
+        Serial.println("Liquid: tanks: volume restant " + String((now - startVolumeCount) * (DEBIT_PER_SECOND / 1000.)) + "cl");
         
         this->step();
 
@@ -119,7 +165,7 @@ public:
             colors[DEFAULT_OUTLINE_COLOR][FORMAT_COLOR_16],
             colors[DEFAULT_BACKGROUND_COLOR][FORMAT_COLOR_16],
             colors[DEFAULT_TEXT_COLOR][FORMAT_COLOR_16],
-            (char *)"Lets get this done",
+            (char *)"Cocktail",
             2,
             2
         );
@@ -189,46 +235,42 @@ public:
 
     bool serveRecipe()
     {
-        double volume = 27.0;
+        double volume = 33.0;
 
-        // for (int i = 0; i < NB_TANKS; ++i)
-        //     if (tanks[i].canFill(recipes[selectedRecipe].getProportion(i) * volume))
-        //         return false;
+        // do not take into account ice volume
+        for (int i = 0; i < TANKS_COUNT; ++i)
+        {
+            if (tanks[i].canFill(recipes[selectedRecipe].getProportion(i) * volume))
+            {
+                Serial.println("tank can fill False " + String(i));
+                return false;
+            }
+        }
 
         this->startRoutine();
 
         if (this->checkStop(getTouch())) return false;
         if (!this->step()) return false;
 
+        double initialWeight = loadCell.readInGramms();
 
-        if (recipes[selectedRecipe].getIceQuantity() > 0)
-        {
-            for (int i = 0; i < 3; ++i)
-            {
-                stepperMotor.setDirection(false);
-                for(int x = 0; x < STEPPER_MOTOR_STEPS_PER_REVOLUTION * 16 / 4; x++)
-                    stepperMotor.step(-1);
+        if (!this->serveIce(.7 * volume * recipes[selectedRecipe].getIceQuantity()))
+            return false;
 
-                delay(1000);
+        double iceWeight = loadCell.readInGramms() - initialWeight;
+        double iceVolume = iceWeight * ServeDialog::ICE_GRAMMS_TO_CL;
 
-                stepperMotor.setDirection(true);
-                for(int x = 0; x < STEPPER_MOTOR_STEPS_PER_REVOLUTION * 16 / 4; x++)
-                    stepperMotor.step(-1);
-
-                delay(1000);
-
-                if (this->checkStop(getTouch())) return false;
-            }
-        }
+        Serial.println("Ice: Weight: " + String(iceWeight) + "g");
+        Serial.println("Ice: Volume: " + String(iceVolume) + "cl");
 
         if (this->checkStop(getTouch())) return false;
         if (!this->step()) return false;
 
-        for (int i = 0; i < NB_TANKS; ++i)
+        for (int i = 0; i < TANKS_COUNT; ++i)
         {
             double proportion = recipes[selectedRecipe].getProportion(i);
 
-            if (proportion > 0.0 && !this->serveLiquid(i, proportion * volume))
+            if (proportion > 0.0 && !this->serveLiquid(i, proportion * (volume - iceVolume)))
                     return false;
         }
 

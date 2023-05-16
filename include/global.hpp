@@ -38,15 +38,15 @@ const Box dialogContentBox(SCREEN_WIDTH/2, V_SPACING + pageContentBox.getCaseHei
 // BLACK | NAVY | DARKGREEN | DARKCYAN | MAROON | PURPLE | OLIVE | LIGHTGREY | DARKGREY
 // BLUE | GREEN | CYAN | RED | MAGENTA | YELLOW | WHITE | ORANGE | GREENYELLOW
 
-Recipe recipes[RECIPES_COUNT] = {
-    Recipe("Mojito", CM_COLORS_GREEN, (int []){ 30, 10, 40, 0, 0, 0}, 0),
-    Recipe("Pina Colada", CM_COLORS_DARKCYAN, (int []){ 30, 10, 40, 0, 0, 0}, 0),
-    Recipe("Caipirinha", CM_COLORS_MAGENTA, (int []){ 30, 10, 40, 0, 0, 0}, 0),
-    Recipe("Cosmopolitan", CM_COLORS_YELLOW, (int []){ 30, 10, 40, 0, 0, 0}, 0),
-    Recipe("Margarita", CM_COLORS_PINK, (int []){ 30, 10, 40, 0, 0, 0}, 0),
-    Recipe("Grenadine", CM_COLORS_RED, (int []){ 30, 10, 40, 0, 0, 0}, 0),
-    Recipe("Ricard", CM_COLORS_YELLOW, (int []){ 30, 10, 40, 0, 0, 0}, 0),
-    Recipe("Spritz", CM_COLORS_RED, (int []){ 30, 10, 40, 0, 0, 0}, 0)
+Recipe recipes[RECIPES_COUNT] = {                                  //   G | V | M | O | A | S
+    Recipe( "Mojito Sprite",        CM_COLORS_GREEN,        (int []){   0,  0,  1,  0,  0,  1 },    10 ),
+    Recipe( "Vodka orange",         CM_COLORS_ORANGE,       (int []){   0,  1,  0,  4,  0,  0 },    10 ),
+    Recipe( "Gin orange",           CM_COLORS_ORANGE,       (int []){   1,  0,  0,  4,  0,  0 },    10 ),
+    Recipe( "Mojito ananas",        CM_COLORS_YELLOW,       (int []){   0,  0,  1,  0,  1,  0 },    10 ),
+    Recipe( "Gin Sprite ananas",    CM_COLORS_GREENYELLOW,  (int []){   1,  0,  0,  0,  2,  2 },    10 ),
+    Recipe( "Vodka orange ananas",  CM_COLORS_GREENYELLOW,  (int []){   0,  1,  0,  2,  2,  0 },    10 ),
+    Recipe( "Jus d'orange",         CM_COLORS_ORANGE,       (int []){   0,  0,  0,  1,  0,  0 },    10 ),
+    Recipe( "Jus d'ananas",         CM_COLORS_YELLOW,       (int []){   0,  0,  0,  0,  1,  0 },    10 )
 };
 
 int selectedRecipe = 0;
@@ -64,7 +64,7 @@ int selectedRecipe = 0;
 
 RGBStrip rgbStrip(RGB_STRIP_LEDS_COUNT, RGB_STRIP_PIN_SIGNAL, RGBStrip::Mode::RAINBOW);
 
-LevelSensor levelSensors[NB_TANKS] = {
+LevelSensor levelSensors[TANKS_COUNT] = {
     LevelSensor(LEVEL_SENSOR_0_PIN),
     LevelSensor(LEVEL_SENSOR_1_PIN),
     LevelSensor(LEVEL_SENSOR_2_PIN),
@@ -75,7 +75,7 @@ LevelSensor levelSensors[NB_TANKS] = {
 
 StepperMotor stepperMotor(STEPPER_MOTOR_PIN_DIR, STEPPER_MOTOR_PIN_STEP);
 
-Valve valves[NB_TANKS] = {
+Valve valves[TANKS_COUNT] = {
     Valve(VALVE_0_PIN),
     Valve(VALVE_1_PIN),
     Valve(VALVE_2_PIN),
@@ -92,7 +92,7 @@ LoadCell loadCell(LOAD_CELL_PIN_DATA, LOAD_CELL_PIN_CLOCK);
 
 #include "Tank.hpp"
 
-Tank tanks[NB_TANKS] = {
+Tank tanks[TANKS_COUNT] = {
     Tank(0),
     Tank(1),
     Tank(2),
@@ -119,3 +119,4 @@ Tank tanks[NB_TANKS] = {
 #include "containers/pages/RecipesMenuPage.hpp"
 #include "containers/pages/SettingsPage.hpp"
 #include "containers/pages/AboutPage.hpp"
+#include "containers/pages/ManualControlPage.hpp"

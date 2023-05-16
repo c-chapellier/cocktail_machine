@@ -8,7 +8,8 @@ class Slider : public UIContainer
 private:
     const char *name;
     const int x, y, w, h;
-    int value = 0;          // 0-100
+    const int min = 0, max = 10;
+    int value = min;
 
 public:
     Slider(const char *name, int x, int y, int w, int h)
@@ -21,7 +22,7 @@ public:
     {
         tft.drawRect(this->x, this->y, this->w, this->h, colors[SLIDER_OUTLINE_COLOR][FORMAT_COLOR_16]);
         tft.fillRect(this->x + 2, this->y + 2, this->w - 4, this->h - 4, colors[SLIDER_BACKGROUND_COLOR][FORMAT_COLOR_16]);
-        tft.fillRect(this->x + 2, this->y + 2, ((long int)(this->w - 4)) * this->value/100, this->h - 4, colors[SLIDER_FILL_COLOR][FORMAT_COLOR_16]);
+        tft.fillRect(this->x + 2, this->y + 2, ((long int)(this->w - 4)) * this->value/this->max, this->h - 4, colors[SLIDER_FILL_COLOR][FORMAT_COLOR_16]);
 
         if (this->name != NULL)
         {
@@ -43,7 +44,7 @@ public:
     {
         if (down && (x <= touchX && touchX <= x + w && y <= touchY && touchY <= y + h))
         {
-            this->value = (touchX - x) * 100/w;
+            this->value = (touchX - x) * this->max/w;
             this->render();
         }
 
@@ -57,7 +58,7 @@ public:
 
     void setValue(int value)
     {
-        if (value < 0 || value > 100)
+        if (value < this->min || value > this->max)
             return;
 
         this->value = value;

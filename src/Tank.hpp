@@ -42,4 +42,9 @@ public:
     {
         this->volume -= volume;
     }
+
+    double getVolume() const
+    {
+        return this->volume;
+    }
 };

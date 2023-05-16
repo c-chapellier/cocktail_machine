@@ -25,7 +25,7 @@ public :
         digitalWrite(this->dirPin, this->direction ? HIGH : LOW);
     }
 
-    void step(long delay)
+    void step()
     {
         digitalWrite(this->stepPin, HIGH);
         delayMicroseconds(2);

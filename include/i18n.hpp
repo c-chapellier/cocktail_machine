@@ -46,15 +46,17 @@ const char *uiContainersNames[N_UI_CONTAINERS][N_LANGUAGES] = {
     { "Controle manuel", "Manual control", "Control manual", "Handmatige bediening", "Manuelle Steuerung" }
 };
 
-#define N_PHYSICAL_CONTAINERS 6
+#define TANKS_COUNT 6
 
-const char *physicalContainersNames[N_PHYSICAL_CONTAINERS][N_LANGUAGES] = {
-    { "Coca", "Coke", "Coca", "Coca", "Coca" },
-    { "Eau", "Water", "Agua", "Water", "Wasser" },
-    { "Ricard", "Ricard", "Ricard", "Ricard", "Ricard" },
-    { "Rhum", "Rum", "Ron", "Rum", "Rum" },
+const char *physicalContainersNames[TANKS_COUNT][N_LANGUAGES] = {
+    { "Gin", "Gin", "Ginebra", "Gin", "Gin" },
     { "Vodka", "Vodka", "Vodka", "Wodka", "Wodka" },
-    { "Glucose", "Glucose", "Glucosa", "Glucose", "Glucose" }
+    { "Mojito", "Mojito", "Mojito", "Mojito", "Mojito" },
+    { "Jus d'orange", "Orange juice", "Jugo de naranja", "Sinaasappelsap", "Orangensaft" },
+    { "Jus d'ananas", "Pineapple juice", "Jugo de pina", "Ananassap", "Ananassaft" },
+    { "Sprite", "Sprite", "Sprite", "Sprite", "Sprite" }
 };
 
 const char *iceContainerName[N_LANGUAGES] = { "Glace", "Ice", "Hielo", "Ijs", "Eis" };
+
+const char *vidangeName[N_LANGUAGES] = { "Vidange", "Drain", "Drenaje", "Drain", "Ablassen" };

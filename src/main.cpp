@@ -27,7 +27,7 @@ void setup()
     rgbStrip.init();
     stepperMotor.init();
     loadCell.init();
-    for (int i = 0; i<NB_TANKS;i++)
+    for (int i = 0; i<TANKS_COUNT;i++)
     {
         valves[i].init();
         levelSensors[i].init();

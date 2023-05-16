@@ -32,7 +32,7 @@ public:
 
     void setIceQuantity(int value)
     {
-        if (value < 0 || value > 100) return;
+        if (value < 0 || value > 10) return;
 
         this->iceQuantity = value;
     }
