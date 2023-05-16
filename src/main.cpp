@@ -4,13 +4,11 @@
 UIContainer *pages[] = {
     new MenuPage(),
     new RecipesMenuPage(SERVE_DIALOG),
-    new RecipesMenuPage(EDIT_RECIPE_DIALOG_1),
+    new RecipesMenuPage(EDIT_RECIPE_DIALOG),
     new ServeDialog(),
     new SettingsPage(),
     new AboutPage(),
-    new EditRecipeDialog1(),
-    new EditRecipeDialog2(),
-    new EditRecipeNameDialog(),
+    new EditRecipeDialog(),
     new ManualControlPage()
 };
 int numPages = sizeof(pages) / sizeof(pages[0]);
