@@ -9,7 +9,6 @@
 <!-- [![LinkedIn][linkedin-shield]][linkedin-url] -->
 
 
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -27,7 +26,6 @@
     <a href="https://github.com/c-chapellier/cocktail_machine/issues">Request Feature</a>
   </p>
 </div>
-
 
 
 <!-- TABLE OF CONTENTS -->
@@ -57,11 +55,10 @@
 </details>
 
 
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][demo-video]](https://example.com)
 
 This project is the firmware for the Cocktail Machine. It is based on the PlatformIO framework and uses the Arduino Mega 2560 as microcontroller. The firmware is written in C++ with the PlatformIO's Visual Studio Code extension.
 
@@ -72,7 +69,6 @@ It controls the following components:
 * 1x stepper motor for ice cube control
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 ### Built With
@@ -86,7 +82,6 @@ It controls the following components:
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
 ### Built also with this
 
 [![Stack Overflow][Stack Overflow]][Stack Overflow-url]
@@ -95,7 +90,6 @@ It controls the following components:
 [![Spotify][Spotify]][Spotify-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- GETTING STARTED -->
@@ -120,53 +114,6 @@ You must have installed Visual Studio Code and the PlatformIO extension. You can
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
-<!-- USAGE EXAMPLES -->
-<!-- ## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
- -->
-
-
-<!-- ROADMAP -->
-<!-- ## Roadmap
-
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
-
-See the [open issues](https://github.com/c-chapellier/cocktail_machine/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
- -->
-
-
-<!-- CONTRIBUTING -->
-<!-- ## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
- -->
-
-
 <!-- LICENSE -->
 ## License
 
@@ -185,7 +132,6 @@ Project Link: [https://github.com/c-chapellier/cocktail_machine](https://github.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
@@ -193,14 +139,6 @@ Project Link: [https://github.com/c-chapellier/cocktail_machine](https://github.
 * [Best README Template](https://github.com/c-chapellier/cocktail_machine)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## I'm inevitable
-<br />
-<div align="center">
-  <a href="https://github.com/c-chapellier/cocktail_machine">
-    <img src="images/thanos.jpg" width="540" height="320">
-  </a>
-</div>
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
@@ -217,7 +155,7 @@ Project Link: [https://github.com/c-chapellier/cocktail_machine](https://github.
 <!-- [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/othneildrew -->
 
-[product-screenshot]: images/screenshot.png
+[demo-video]: assetsdemo.mp4
 
 [Stack Overflow]: https://img.shields.io/badge/-Stackoverflow-FE7A16?style=for-the-badge&logo=stack-overflow&logoColor=white
 [Stack Overflow-url]: https://stackoverflow.com/
