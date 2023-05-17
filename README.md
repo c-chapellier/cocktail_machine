@@ -13,7 +13,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/c-chapellier/cocktail_machine">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="assets/logo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Cocktail Machine Firmware</h3>
@@ -58,7 +58,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][demo-video]](https://example.com)
+https://github.com/c-chapellier/cocktail_machine/blob/main/assets/demo.mp4
 
 This project is the firmware for the Cocktail Machine. It is based on the PlatformIO framework and uses the Arduino Mega 2560 as microcontroller. The firmware is written in C++ with the PlatformIO's Visual Studio Code extension.
 
