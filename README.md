@@ -8,8 +8,6 @@
 [![MIT License][license-shield]][license-url]
 <!-- [![LinkedIn][linkedin-shield]][linkedin-url] -->
 
-https://github.com/c-chapellier/cocktail_machine/assets/48524901/c8160ee2-eb17-4892-a837-76b84690d2aa
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -23,6 +21,7 @@ https://github.com/c-chapellier/cocktail_machine/assets/48524901/c8160ee2-eb17-4
   </p>
 </div>
 
+https://github.com/c-chapellier/cocktail_machine/assets/48524901/c8160ee2-eb17-4892-a837-76b84690d2aa
 
 <!-- TABLE OF CONTENTS -->
 <details>
